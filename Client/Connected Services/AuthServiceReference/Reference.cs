@@ -20,6 +20,12 @@ namespace Client.AuthServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/AuthSerivce", ReplyAction="http://tempuri.org/IAuthService/AuthSerivceResponse")]
         System.Threading.Tasks.Task<bool> AuthSerivceAsync(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/CheckUser", ReplyAction="http://tempuri.org/IAuthService/CheckUserResponse")]
+        bool CheckUser(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/CheckUser", ReplyAction="http://tempuri.org/IAuthService/CheckUserResponse")]
+        System.Threading.Tasks.Task<bool> CheckUserAsync(string username, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +61,14 @@ namespace Client.AuthServiceReference {
         
         public System.Threading.Tasks.Task<bool> AuthSerivceAsync(string username, string password) {
             return base.Channel.AuthSerivceAsync(username, password);
+        }
+        
+        public bool CheckUser(string username, string password) {
+            return base.Channel.CheckUser(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckUserAsync(string username, string password) {
+            return base.Channel.CheckUserAsync(username, password);
         }
     }
 }

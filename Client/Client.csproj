@@ -101,10 +101,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Connected Services\AuthServiceReference\AuthService.wsdl" />
-    <None Include="Connected Services\AuthServiceReference\Service1.xsd">
+    <None Include="Connected Services\AuthServiceReference\AuthService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\AuthServiceReference\Service11.xsd">
+    <None Include="Connected Services\AuthServiceReference\AuthService1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -122,7 +122,7 @@
     <WCFMetadataStorage Include="Connected Services\AuthServiceReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\AuthServiceReference\Service1.disco" />
+    <None Include="Connected Services\AuthServiceReference\AuthService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\AuthServiceReference\configuration91.svcinfo" />

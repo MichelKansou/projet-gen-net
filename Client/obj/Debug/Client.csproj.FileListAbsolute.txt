@@ -14,3 +14,19 @@ C:\Users\Florian\Documents\Visual Studio 2017\Projects\Projet-Gen\Middleware\Cli
 C:\Users\Florian\Documents\Visual Studio 2017\Projects\Projet-Gen\Middleware\Client\obj\Debug\Auth.g.cs
 C:\Users\Florian\Documents\Visual Studio 2017\Projects\Projet-Gen\Middleware\Client\obj\Debug\Main.baml
 C:\Users\Florian\Documents\Visual Studio 2017\Projects\Projet-Gen\Middleware\Client\obj\Debug\Auth.baml
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\bin\Debug\Client.exe.config
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\bin\Debug\Client.exe
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\bin\Debug\Client.pdb
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\obj\Debug\Main.g.cs
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\obj\Debug\Auth.g.cs
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\obj\Debug\App.g.cs
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\obj\Debug\Client_MarkupCompile.cache
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\obj\Debug\Client_MarkupCompile.lref
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\obj\Debug\Main.baml
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\obj\Debug\Auth.baml
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\obj\Debug\Client.g.resources
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\obj\Debug\Client.csproj.GenerateResource.Cache
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\obj\Debug\Client.exe
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Client\obj\Debug\Client.pdb
