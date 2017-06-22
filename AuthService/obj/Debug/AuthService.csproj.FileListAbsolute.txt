@@ -1,0 +1,6 @@
+c:\users\florian\documents\visual studio 2017\Projects\Projet-Gen\Middleware\AuthService\bin\AuthService.dll.config
+c:\users\florian\documents\visual studio 2017\Projects\Projet-Gen\Middleware\AuthService\bin\AuthService.dll
+c:\users\florian\documents\visual studio 2017\Projects\Projet-Gen\Middleware\AuthService\bin\AuthService.pdb
+c:\users\florian\documents\visual studio 2017\Projects\Projet-Gen\Middleware\AuthService\obj\Debug\AuthService.csprojResolveAssemblyReference.cache
+c:\users\florian\documents\visual studio 2017\Projects\Projet-Gen\Middleware\AuthService\obj\Debug\AuthService.dll
+c:\users\florian\documents\visual studio 2017\Projects\Projet-Gen\Middleware\AuthService\obj\Debug\AuthService.pdb
