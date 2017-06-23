@@ -62,11 +62,10 @@ namespace Client
             this.msg.op_statut = true;
             Console.Write("\n Operation " + this.msg.op_name + " Executed \n");
 
-            this.proxy.dispatcher(this.msg);
+            this.proxy.Dispatcher(this.msg);
 
-           // Console.WriteLine("App return : " + this.msg.data[0]);
-            /*
-            if ((bool) msg.data[0])
+            
+            if ((bool) this.msg.data[0])
             {
                 stopLoading();
                 MessageBox.Show("You are authenticated");
@@ -75,7 +74,7 @@ namespace Client
                 stopLoading();
                 MessageBox.Show("Error : Wrong username or password");
             }
-            */
+            
 
         }
 

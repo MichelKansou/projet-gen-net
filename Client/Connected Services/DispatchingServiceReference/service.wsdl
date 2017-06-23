@@ -41,24 +41,24 @@
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IDispatchingService_dispatcher_InputMessage">
-    <wsdl:part name="parameters" element="tns:dispatcher" />
+  <wsdl:message name="IDispatchingService_Dispatcher_InputMessage">
+    <wsdl:part name="parameters" element="tns:Dispatcher" />
   </wsdl:message>
-  <wsdl:message name="IDispatchingService_dispatcher_OutputMessage">
-    <wsdl:part name="parameters" element="tns:dispatcherResponse" />
+  <wsdl:message name="IDispatchingService_Dispatcher_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DispatcherResponse" />
   </wsdl:message>
   <wsdl:portType name="IDispatchingService">
-    <wsdl:operation name="dispatcher">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDispatchingService/dispatcher" message="tns:IDispatchingService_dispatcher_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDispatchingService/dispatcherResponse" message="tns:IDispatchingService_dispatcher_OutputMessage" />
+    <wsdl:operation name="Dispatcher">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDispatchingService/Dispatcher" message="tns:IDispatchingService_Dispatcher_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDispatchingService/DispatcherResponse" message="tns:IDispatchingService_Dispatcher_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SvcNetTcpBindingEndPoint" type="tns:IDispatchingService">
     <wsp:PolicyReference URI="#SvcNetTcpBindingEndPoint_policy">
     </wsp:PolicyReference>
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="dispatcher">
-      <soap12:operation soapAction="http://tempuri.org/IDispatchingService/dispatcher" style="document" />
+    <wsdl:operation name="Dispatcher">
+      <soap12:operation soapAction="http://tempuri.org/IDispatchingService/Dispatcher" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

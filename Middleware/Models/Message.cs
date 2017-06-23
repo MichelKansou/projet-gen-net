@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Middleware
 {
     [DataContract]
-    public class Message
+    public struct Message
     {
         [DataMember]
         private bool op_statut;

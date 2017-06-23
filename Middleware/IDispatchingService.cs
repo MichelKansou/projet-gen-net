@@ -12,7 +12,7 @@ namespace Middleware
     public interface IDispatchingService
     {
         [OperationContract]
-        Message dispatcher(Message msg);
+        Message Dispatcher(Message msg);
 
         // TODO: Add your service operations here
     }
