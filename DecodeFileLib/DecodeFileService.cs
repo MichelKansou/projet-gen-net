@@ -12,11 +12,10 @@ namespace DecodeFileLib
         private JmsListener jmsListner;
         private JmsProducer jmsProducer;
 
-        public DecodeFileService()
+        public DecodeFileService(String urlListener, String queueListener, String urlProducer, String queueProducer)
         {
-            jmsListner = new JmsListener("tcp://192.168.48.1:61616", "decodeResponse");
-            jmsProducer = new JmsProducer("tcp://192.168.48.1:61616", "decodeAsk");
-
+            jmsListner = new JmsListener(urlListener, queueListener);
+            jmsProducer = new JmsProducer(urlProducer, queueProducer);
         }
 
         public DecodeFileOut DecodeFile(DecodeFileIn decodeFile)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
+using Middleware.Models;
 
 namespace Middleware
 {
@@ -12,7 +12,7 @@ namespace Middleware
     public interface IDispatchingService
     {
         [OperationContract]
-        Message Dispatcher(Message msg);
+        Response Dispatcher(Message msg);
 
         // TODO: Add your service operations here
     }
