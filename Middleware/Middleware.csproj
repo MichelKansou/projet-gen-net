@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AuthService</RootNamespace>
-    <AssemblyName>AuthService</AssemblyName>
+    <RootNamespace>Middleware</RootNamespace>
+    <AssemblyName>Middleware</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -62,13 +62,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthService.svc" />
+    <Content Include="Dispatching.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthService.svc.cs">
       <DependentUpon>AuthService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Dispatching.svc.cs">
+      <DependentUpon>Dispatching.svc</DependentUpon>
+    </Compile>
     <Compile Include="IAuthService.cs" />
+    <Compile Include="IDispatching.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

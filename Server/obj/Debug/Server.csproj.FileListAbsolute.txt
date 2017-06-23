@@ -1,0 +1,9 @@
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Server\bin\Debug\Server.exe.config
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Server\bin\Debug\Server.exe
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Server\bin\Debug\Server.pdb
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Server\bin\Debug\Middleware.dll
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Server\bin\Debug\Middleware.pdb
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Server\bin\Debug\Middleware.dll.config
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Server\obj\Debug\Server.exe
+C:\Users\Florian\Documents\GitHub\projet-gen-net\Server\obj\Debug\Server.pdb

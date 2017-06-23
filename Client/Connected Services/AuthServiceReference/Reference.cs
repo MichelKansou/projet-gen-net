@@ -9,7 +9,198 @@
 //------------------------------------------------------------------------------
 
 namespace Client.AuthServiceReference {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MSG", Namespace="http://schemas.datacontract.org/2004/07/AuthService")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
+    public partial struct MSG : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string app_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string app_tockenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string app_versionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private object[] dataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string op_infosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string op_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool op_statutField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string user_passwordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string user_tokenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string usernameField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string app_name {
+            get {
+                return this.app_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.app_nameField, value) != true)) {
+                    this.app_nameField = value;
+                    this.RaisePropertyChanged("app_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string app_tocken {
+            get {
+                return this.app_tockenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.app_tockenField, value) != true)) {
+                    this.app_tockenField = value;
+                    this.RaisePropertyChanged("app_tocken");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string app_version {
+            get {
+                return this.app_versionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.app_versionField, value) != true)) {
+                    this.app_versionField = value;
+                    this.RaisePropertyChanged("app_version");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public object[] data {
+            get {
+                return this.dataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.dataField, value) != true)) {
+                    this.dataField = value;
+                    this.RaisePropertyChanged("data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string op_infos {
+            get {
+                return this.op_infosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.op_infosField, value) != true)) {
+                    this.op_infosField = value;
+                    this.RaisePropertyChanged("op_infos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string op_name {
+            get {
+                return this.op_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.op_nameField, value) != true)) {
+                    this.op_nameField = value;
+                    this.RaisePropertyChanged("op_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool op_statut {
+            get {
+                return this.op_statutField;
+            }
+            set {
+                if ((this.op_statutField.Equals(value) != true)) {
+                    this.op_statutField = value;
+                    this.RaisePropertyChanged("op_statut");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string user_password {
+            get {
+                return this.user_passwordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.user_passwordField, value) != true)) {
+                    this.user_passwordField = value;
+                    this.RaisePropertyChanged("user_password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string user_token {
+            get {
+                return this.user_tokenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.user_tokenField, value) != true)) {
+                    this.user_tokenField = value;
+                    this.RaisePropertyChanged("user_token");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string username {
+            get {
+                return this.usernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.usernameField, value) != true)) {
+                    this.usernameField = value;
+                    this.RaisePropertyChanged("username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AuthServiceReference.IAuthService")]
@@ -20,6 +211,12 @@ namespace Client.AuthServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/AuthSerivce", ReplyAction="http://tempuri.org/IAuthService/AuthSerivceResponse")]
         System.Threading.Tasks.Task<bool> AuthSerivceAsync(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/dispatching", ReplyAction="http://tempuri.org/IAuthService/dispatchingResponse")]
+        Client.AuthServiceReference.MSG dispatching(Client.AuthServiceReference.MSG msg);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/dispatching", ReplyAction="http://tempuri.org/IAuthService/dispatchingResponse")]
+        System.Threading.Tasks.Task<Client.AuthServiceReference.MSG> dispatchingAsync(Client.AuthServiceReference.MSG msg);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/CheckUser", ReplyAction="http://tempuri.org/IAuthService/CheckUserResponse")]
         bool CheckUser(string username, string password);
@@ -61,6 +258,14 @@ namespace Client.AuthServiceReference {
         
         public System.Threading.Tasks.Task<bool> AuthSerivceAsync(string username, string password) {
             return base.Channel.AuthSerivceAsync(username, password);
+        }
+        
+        public Client.AuthServiceReference.MSG dispatching(Client.AuthServiceReference.MSG msg) {
+            return base.Channel.dispatching(msg);
+        }
+        
+        public System.Threading.Tasks.Task<Client.AuthServiceReference.MSG> dispatchingAsync(Client.AuthServiceReference.MSG msg) {
+            return base.Channel.dispatchingAsync(msg);
         }
         
         public bool CheckUser(string username, string password) {

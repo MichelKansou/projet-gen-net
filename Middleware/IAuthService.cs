@@ -8,7 +8,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace AuthService
+namespace Middleware
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IAuthService" in both code and config file together.
     [ServiceContract]

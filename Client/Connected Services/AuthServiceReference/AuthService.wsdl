@@ -4,6 +4,8 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:58526/AuthService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:58526/AuthService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:58526/AuthService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AuthService" />
+      <xsd:import schemaLocation="http://localhost:58526/AuthService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAuthService_AuthSerivce_InputMessage">
@@ -11,6 +13,12 @@
   </wsdl:message>
   <wsdl:message name="IAuthService_AuthSerivce_OutputMessage">
     <wsdl:part name="parameters" element="tns:AuthSerivceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAuthService_dispatching_InputMessage">
+    <wsdl:part name="parameters" element="tns:dispatching" />
+  </wsdl:message>
+  <wsdl:message name="IAuthService_dispatching_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dispatchingResponse" />
   </wsdl:message>
   <wsdl:message name="IAuthService_CheckUser_InputMessage">
     <wsdl:part name="parameters" element="tns:CheckUser" />
@@ -23,6 +31,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/AuthSerivce" message="tns:IAuthService_AuthSerivce_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAuthService/AuthSerivceResponse" message="tns:IAuthService_AuthSerivce_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="dispatching">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/dispatching" message="tns:IAuthService_dispatching_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthService/dispatchingResponse" message="tns:IAuthService_dispatching_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CheckUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/CheckUser" message="tns:IAuthService_CheckUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAuthService/CheckUserResponse" message="tns:IAuthService_CheckUser_OutputMessage" />
@@ -32,6 +44,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="AuthSerivce">
       <soap:operation soapAction="http://tempuri.org/IAuthService/AuthSerivce" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dispatching">
+      <soap:operation soapAction="http://tempuri.org/IAuthService/dispatching" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

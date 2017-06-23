@@ -73,6 +73,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\DispatchingServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="ILoader.cs" />
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
@@ -107,6 +112,31 @@
     <None Include="Connected Services\AuthServiceReference\AuthService1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\AuthServiceReference\AuthService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthServiceReference\AuthService21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthServiceReference\Client.AuthServiceReference.MSG.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DispatchingServiceReference\Client.DispatchingServiceReference.MSG.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DispatchingServiceReference\Dispatching.wsdl" />
+    <None Include="Connected Services\DispatchingServiceReference\Dispatching.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DispatchingServiceReference\Dispatching1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DispatchingServiceReference\Dispatching2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DispatchingServiceReference\Dispatching3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -120,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\AuthServiceReference\" />
+    <WCFMetadataStorage Include="Connected Services\DispatchingServiceReference\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\AuthServiceReference\AuthService.disco" />
@@ -132,6 +163,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\AuthServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DispatchingServiceReference\Dispatching.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DispatchingServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DispatchingServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DispatchingServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2202325d-2736-491c-9a5b-eed3affad726" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:58526/Dispatching.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Dispatching.xsd" MetadataType="Schema" ID="82b39c2e-480f-4d66-b573-1ad51c592b58" SourceId="1" SourceUrl="http://localhost:58526/Dispatching.svc?xsd=xsd2" />
+    <MetadataFile FileName="Dispatching.wsdl" MetadataType="Wsdl" ID="13d2ce72-e7fa-4d08-bc50-cda666f6126e" SourceId="1" SourceUrl="http://localhost:58526/Dispatching.svc?wsdl" />
+    <MetadataFile FileName="Dispatching1.xsd" MetadataType="Schema" ID="8930d94a-0c49-472d-bded-2dbb24a08b8d" SourceId="1" SourceUrl="http://localhost:58526/Dispatching.svc?xsd=xsd3" />
+    <MetadataFile FileName="Dispatching2.xsd" MetadataType="Schema" ID="ddae63b1-99b2-48a7-9967-f53b3022fd37" SourceId="1" SourceUrl="http://localhost:58526/Dispatching.svc?xsd=xsd1" />
+    <MetadataFile FileName="Dispatching3.xsd" MetadataType="Schema" ID="0c84d329-ef2e-4de4-b229-73dd6b8102c2" SourceId="1" SourceUrl="http://localhost:58526/Dispatching.svc?xsd=xsd0" />
+    <MetadataFile FileName="Dispatching.disco" MetadataType="Disco" ID="c2a34f39-2d0a-4856-a5b1-6af25d6d9607" SourceId="1" SourceUrl="http://localhost:58526/Dispatching.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

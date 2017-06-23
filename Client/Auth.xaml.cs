@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Client.DispatchingServiceReference;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,9 +25,13 @@ namespace Client
     {
         private bool _loading;
         private string _loaderText;
+        private MSG msg;
+        private static DispatchingServiceReference.IDispatching proxy;
+
 
         public bool loading
         {
+
             get { return _loading; }
             private set { _loading = value; }
         }
@@ -40,14 +46,29 @@ namespace Client
         {
             InitializeComponent();
             this.loading = false;
+            string uri = "http://localhost:58526/serviceWCF";
+            EndpointAddress ep = new EndpointAddress(uri);
+            proxy = ChannelFactory<IDispatching>.CreateChannel(new BasicHttpBinding(), ep);
+            initialize_msg();
         }
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
             startLoading();
-            AuthServiceReference.AuthServiceClient auth = new AuthServiceReference.AuthServiceClient();
+            this.msg.username = usernameTextBox.Text;
+            this.msg.user_password = passwordTextBox.Text;
+            this.msg.op_name = "authentication";
+            this.msg.op_statut = true;
 
-            if (auth.AuthSerivce(usernameTextBox.Text, passwordTextBox.Text))
+            Console.Write(this.msg);
+
+            proxy.dispatcher(this.msg);
+
+            Console.Write(this.msg.data);
+            Console.Write("Executed");
+
+            /*
+            if ((bool) msg.data[0])
             {
                 stopLoading();
                 MessageBox.Show("You are authenticated");
@@ -56,7 +77,18 @@ namespace Client
                 stopLoading();
                 MessageBox.Show("Error : Wrong username or password");
             }
+            */
 
+        }
+
+        void initialize_msg()
+        {
+            this.msg.app_name = "gen-client";
+            this.msg.app_version = "1.0";
+            this.msg.app_token = "zEAxsZ3iNwCfWWn46c";
+            this. msg.username = null;
+            this.msg.user_password = null;
+            this.msg.user_token = null;
         }
 
         private void usernameTextBox_TextChanged(object sender, TextChangedEventArgs e)
