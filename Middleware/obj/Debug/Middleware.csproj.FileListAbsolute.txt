@@ -1,6 +1,0 @@
-C:\Users\Florian\Documents\GitHub\projet-gen-net\Middleware\bin\Debug\Middleware.dll.config
-C:\Users\Florian\Documents\GitHub\projet-gen-net\Middleware\bin\Debug\Middleware.dll
-C:\Users\Florian\Documents\GitHub\projet-gen-net\Middleware\bin\Debug\Middleware.pdb
-C:\Users\Florian\Documents\GitHub\projet-gen-net\Middleware\obj\Debug\Middleware.dll
-C:\Users\Florian\Documents\GitHub\projet-gen-net\Middleware\obj\Debug\Middleware.pdb
-C:\Users\Florian\Documents\GitHub\projet-gen-net\Middleware\obj\Debug\Middleware.csprojResolveAssemblyReference.cache

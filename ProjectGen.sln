@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Middleware", "Middleware\Middleware.csproj", "{7121F3E1-F4A6-4CE5-AC24-8A08B963C23B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecodeFileLib", "DecodeFileLib\DecodeFileLib.csproj", "{016C57D9-939A-45DD-AB8C-F200D11B04BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{7121F3E1-F4A6-4CE5-AC24-8A08B963C23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7121F3E1-F4A6-4CE5-AC24-8A08B963C23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7121F3E1-F4A6-4CE5-AC24-8A08B963C23B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{016C57D9-939A-45DD-AB8C-F200D11B04BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{016C57D9-939A-45DD-AB8C-F200D11B04BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{016C57D9-939A-45DD-AB8C-F200D11B04BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{016C57D9-939A-45DD-AB8C-F200D11B04BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
