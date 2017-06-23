@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -15,7 +16,8 @@ namespace Middleware
 
         public AuthService()
         {
-            this.connection = new SqlConnection("Data Source=DESKTOP-EQTGMTD;Initial Catalog=projet_gen;Integrated Security=True");
+            connection = new SqlConnection("Data Source=DESKTOP-EQTGMTD;Initial Catalog=projet_gen;Integrated Security=True");
+            Trace.WriteLine("AuthService initialize");
         }
 
         public bool Authenticate(string username, string password)
@@ -25,14 +27,15 @@ namespace Middleware
 
         public bool CheckUser(string username, string password)
         {
+            this.connection = new SqlConnection("Data Source=DESKTOP-EQTGMTD;Initial Catalog=projet_gen;Integrated Security=True");
             User matchingUser = null;
-            using (this.connection)
+            using (connection)
             {
                 string request = "Select * from users where username=@username and password=@password";
                 SqlCommand cmd = new SqlCommand(request, connection);
                 cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@password", password);
-                this.connection.Open();
+                connection.Open();
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -43,7 +46,7 @@ namespace Middleware
                             Password = reader["password"].ToString()
                         };
                     }
-                    this.connection.Close();
+                    connection.Close();
                 }
             }
             return matchingUser != null ? true : false;

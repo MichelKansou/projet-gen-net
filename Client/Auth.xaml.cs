@@ -49,7 +49,7 @@ namespace Client
             this.proxy = new DispatchingServiceClient();
             this.msg = new Message();
             initialize_msg();
-            Console.Write("\n initialize message \n");
+            Console.WriteLine("initialize message");
             //Console.Write(this.msg.app_token + "\n");
         }
 
@@ -60,11 +60,11 @@ namespace Client
             this.msg.user_password = passwordTextBox.Text;
             this.msg.op_name = "authentication";
             this.msg.op_statut = true;
-            Console.Write("\n Operation " + this.msg.op_name + " Executed \n");
+            Console.WriteLine("Operation " + this.msg.op_name + " Executed");
 
-            this.proxy.Dispatcher(this.msg);
+            this.msg = this.proxy.Dispatcher(this.msg);
 
-            
+            Console.WriteLine(this.msg.data[0]);
             if ((bool) this.msg.data[0])
             {
                 stopLoading();
