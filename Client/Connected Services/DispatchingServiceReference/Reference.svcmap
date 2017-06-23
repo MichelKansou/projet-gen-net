@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2202325d-2736-491c-9a5b-eed3affad726" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="71f0b33a-fad7-4e52-af41-06d9d23b6844" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,15 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:58526/Dispatching.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="net.tcp://localhost:8080/DispatchingSvc/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Dispatching.xsd" MetadataType="Schema" ID="82b39c2e-480f-4d66-b573-1ad51c592b58" SourceId="1" SourceUrl="http://localhost:58526/Dispatching.svc?xsd=xsd2" />
-    <MetadataFile FileName="Dispatching.wsdl" MetadataType="Wsdl" ID="13d2ce72-e7fa-4d08-bc50-cda666f6126e" SourceId="1" SourceUrl="http://localhost:58526/Dispatching.svc?wsdl" />
-    <MetadataFile FileName="Dispatching1.xsd" MetadataType="Schema" ID="8930d94a-0c49-472d-bded-2dbb24a08b8d" SourceId="1" SourceUrl="http://localhost:58526/Dispatching.svc?xsd=xsd3" />
-    <MetadataFile FileName="Dispatching2.xsd" MetadataType="Schema" ID="ddae63b1-99b2-48a7-9967-f53b3022fd37" SourceId="1" SourceUrl="http://localhost:58526/Dispatching.svc?xsd=xsd1" />
-    <MetadataFile FileName="Dispatching3.xsd" MetadataType="Schema" ID="0c84d329-ef2e-4de4-b229-73dd6b8102c2" SourceId="1" SourceUrl="http://localhost:58526/Dispatching.svc?xsd=xsd0" />
-    <MetadataFile FileName="Dispatching.disco" MetadataType="Disco" ID="c2a34f39-2d0a-4856-a5b1-6af25d6d9607" SourceId="1" SourceUrl="http://localhost:58526/Dispatching.svc?disco" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="e6be3270-8866-4ecb-8604-538a52aa005f" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="4222e255-6fee-4fe3-b719-ea6f3b4ec0e4" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="47f2880f-01c9-4db8-b59e-9809c3f8d688" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
+    <MetadataFile FileName="Middleware.xsd" MetadataType="Schema" ID="c81d82ee-e3ab-4b72-9408-26781714cab9" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="3454bd7b-0749-4169-ad29-06558d0258fb" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

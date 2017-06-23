@@ -25,8 +25,8 @@ namespace Client
     {
         private bool _loading;
         private string _loaderText;
-        private MSG msg;
-        private static DispatchingServiceReference.IDispatching proxy;
+        private Message msg;
+        private DispatchingServiceClient proxy;
 
 
         public bool loading
@@ -46,10 +46,11 @@ namespace Client
         {
             InitializeComponent();
             this.loading = false;
-            string uri = "http://localhost:58526/serviceWCF";
-            EndpointAddress ep = new EndpointAddress(uri);
-            proxy = ChannelFactory<IDispatching>.CreateChannel(new BasicHttpBinding(), ep);
+            this.proxy = new DispatchingServiceClient();
+            this.msg = new Message();
             initialize_msg();
+            Console.Write("\n initialize message \n");
+            //Console.Write(this.msg.app_token + "\n");
         }
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
@@ -59,14 +60,11 @@ namespace Client
             this.msg.user_password = passwordTextBox.Text;
             this.msg.op_name = "authentication";
             this.msg.op_statut = true;
+            Console.Write("\n Operation " + this.msg.op_name + " Executed \n");
 
-            Console.Write(this.msg);
+            this.proxy.dispatcher(this.msg);
 
-            proxy.dispatcher(this.msg);
-
-            Console.Write(this.msg.data);
-            Console.Write("Executed");
-
+           // Console.WriteLine("App return : " + this.msg.data[0]);
             /*
             if ((bool) msg.data[0])
             {
@@ -81,14 +79,16 @@ namespace Client
 
         }
 
-        void initialize_msg()
+        private void initialize_msg()
         {
+            
             this.msg.app_name = "gen-client";
             this.msg.app_version = "1.0";
             this.msg.app_token = "zEAxsZ3iNwCfWWn46c";
-            this. msg.username = null;
+            this.msg.username = null;
             this.msg.user_password = null;
             this.msg.user_token = null;
+            
         }
 
         private void usernameTextBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -15,10 +15,10 @@ namespace Client.DispatchingServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MSG", Namespace="http://schemas.datacontract.org/2004/07/AuthService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Message", Namespace="http://schemas.datacontract.org/2004/07/Middleware")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
-    public partial struct MSG : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Message : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -53,6 +53,7 @@ namespace Client.DispatchingServiceReference {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string usernameField;
         
+        [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
                 return this.extensionDataField;
@@ -194,7 +195,7 @@ namespace Client.DispatchingServiceReference {
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
-        void RaisePropertyChanged(string propertyName) {
+        protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
@@ -203,48 +204,48 @@ namespace Client.DispatchingServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DispatchingServiceReference.IDispatching")]
-    public interface IDispatching {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DispatchingServiceReference.IDispatchingService")]
+    public interface IDispatchingService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDispatching/dispatcher", ReplyAction="http://tempuri.org/IDispatching/dispatcherResponse")]
-        Client.DispatchingServiceReference.MSG dispatcher(Client.DispatchingServiceReference.MSG msg);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDispatchingService/dispatcher", ReplyAction="http://tempuri.org/IDispatchingService/dispatcherResponse")]
+        Client.DispatchingServiceReference.Message dispatcher(Client.DispatchingServiceReference.Message msg);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDispatching/dispatcher", ReplyAction="http://tempuri.org/IDispatching/dispatcherResponse")]
-        System.Threading.Tasks.Task<Client.DispatchingServiceReference.MSG> dispatcherAsync(Client.DispatchingServiceReference.MSG msg);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDispatchingService/dispatcher", ReplyAction="http://tempuri.org/IDispatchingService/dispatcherResponse")]
+        System.Threading.Tasks.Task<Client.DispatchingServiceReference.Message> dispatcherAsync(Client.DispatchingServiceReference.Message msg);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IDispatchingChannel : Client.DispatchingServiceReference.IDispatching, System.ServiceModel.IClientChannel {
+    public interface IDispatchingServiceChannel : Client.DispatchingServiceReference.IDispatchingService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class DispatchingClient : System.ServiceModel.ClientBase<Client.DispatchingServiceReference.IDispatching>, Client.DispatchingServiceReference.IDispatching {
+    public partial class DispatchingServiceClient : System.ServiceModel.ClientBase<Client.DispatchingServiceReference.IDispatchingService>, Client.DispatchingServiceReference.IDispatchingService {
         
-        public DispatchingClient() {
+        public DispatchingServiceClient() {
         }
         
-        public DispatchingClient(string endpointConfigurationName) : 
+        public DispatchingServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public DispatchingClient(string endpointConfigurationName, string remoteAddress) : 
+        public DispatchingServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public DispatchingClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public DispatchingServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public DispatchingClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public DispatchingServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public Client.DispatchingServiceReference.MSG dispatcher(Client.DispatchingServiceReference.MSG msg) {
+        public Client.DispatchingServiceReference.Message dispatcher(Client.DispatchingServiceReference.Message msg) {
             return base.Channel.dispatcher(msg);
         }
         
-        public System.Threading.Tasks.Task<Client.DispatchingServiceReference.MSG> dispatcherAsync(Client.DispatchingServiceReference.MSG msg) {
+        public System.Threading.Tasks.Task<Client.DispatchingServiceReference.Message> dispatcherAsync(Client.DispatchingServiceReference.Message msg) {
             return base.Channel.dispatcherAsync(msg);
         }
     }
