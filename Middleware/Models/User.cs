@@ -5,9 +5,10 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Middleware
+namespace Middleware.Models
 {
-    [DataContract]
+    [KnownType(typeof(User))]
+    [DataContract(IsReference = true)]
     public class User
     {
         [DataMember]

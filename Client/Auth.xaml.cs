@@ -27,6 +27,7 @@ namespace Client
         private string _loaderText;
         private Message msg;
         private DispatchingServiceClient proxy;
+        private User user;
 
 
         public bool loading
@@ -48,7 +49,8 @@ namespace Client
             this.loading = false;
             this.proxy = new DispatchingServiceClient();
             this.msg = new Message();
-            initialize_msg();
+            this.msg.application = new DispatchingServiceReference.Application();
+            Initialize_msg();
             Console.WriteLine("initialize message");
             //Console.Write(this.msg.app_token + "\n");
         }
@@ -56,18 +58,30 @@ namespace Client
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
             startLoading();
-            this.msg.username = usernameTextBox.Text;
-            this.msg.user_password = passwordTextBox.Text;
-            this.msg.op_name = "authentication";
-            this.msg.op_statut = true;
-            Console.WriteLine("Operation " + this.msg.op_name + " Executed");
+            this.user = new User()
+            {
+                username = usernameTextBox.Text,
+                password = passwordTextBox.Text
+            };
 
-            this.msg = this.proxy.Dispatcher(this.msg);
+            this.msg.operation = "authentication";
+            this.msg.item = this.user as Object;
+            Console.WriteLine("Operation " + this.msg.operation + " Executed");
 
-            Console.WriteLine(this.msg.data[0]);
-            if ((bool) this.msg.data[0])
+            Response response = this.proxy.Dispatcher(this.msg);
+
+            Console.WriteLine("Operation " + this.msg.operation  + " --- " + response.status);
+
+            if (response.status == "SUCCESS")
             {
                 stopLoading();
+                User connectedUser = (User)response.item;
+                Console.WriteLine("User info : ");
+                Console.WriteLine("Username : " + connectedUser.username);
+                Console.WriteLine("Password : " + connectedUser.password);
+                Console.WriteLine("Token : " + connectedUser.token);
+                Console.WriteLine("LastConnection : " + connectedUser.lastConnection);
+                Console.WriteLine("TokenExpiration : " + connectedUser.tokenExpiration);
                 MessageBox.Show("You are authenticated");
             } else
             {
@@ -78,16 +92,13 @@ namespace Client
 
         }
 
-        private void initialize_msg()
+        private void Initialize_msg()
         {
             
-            this.msg.app_name = "gen-client";
-            this.msg.app_version = "1.0";
-            this.msg.app_token = "zEAxsZ3iNwCfWWn46c";
-            this.msg.username = null;
-            this.msg.user_password = null;
-            this.msg.user_token = null;
-            
+            this.msg.application.Name = "gen-client";
+            this.msg.application.Version = "1.0";
+            this.msg.application.Token = "zEAxsZ3iNwCfWWn46c";
+            this.msg.item = null;
         }
 
         private void usernameTextBox_TextChanged(object sender, TextChangedEventArgs e)

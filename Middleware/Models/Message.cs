@@ -6,10 +6,10 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Middleware
+namespace Middleware.Models
 {
     [DataContract]
-    public struct Message
+    public class Message
     {
         [DataMember]
         private string operation;
@@ -17,6 +17,7 @@ namespace Middleware
         private Application application;
         [DataMember]
         private string userToken;
+
         [DataMember]
         private object item;
 

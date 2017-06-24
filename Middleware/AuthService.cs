@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Middleware.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -13,7 +14,7 @@ namespace Middleware
     public class AuthService : IAuthService
     {
         private SqlConnection connection;
-        public User user;
+        private User user;
 
         public AuthService()
         {
@@ -22,10 +23,12 @@ namespace Middleware
             Trace.WriteLine("AuthService initialize");
         }
 
-        public bool Authenticate(string username, string password)
+        public User Authenticate(string username, string password)
         {
 
-            return CheckUser(username, password) ? CheckToken() : false;
+            bool validation = CheckUser(username, password) ? CheckToken() : false;
+
+            return validation ? getUser() : null;
         }
 
         public bool CheckToken()
@@ -123,6 +126,11 @@ namespace Middleware
             }
             this.user = matchingUser;
             return matchingUser != null ? true : false;
+        }
+
+        public User getUser()
+        {
+            return this.user;
         }
     }
 }

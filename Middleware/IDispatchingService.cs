@@ -14,6 +14,9 @@ namespace Middleware
         [OperationContract]
         Response Dispatcher(Message msg);
 
+        [OperationContract]
+        User getUser();
+
         // TODO: Add your service operations here
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="71f0b33a-fad7-4e52-af41-06d9d23b6844" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a817df95-7d77-4d04-82bb-0b9a97f9e36c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,10 @@
     <MetadataSource Address="net.tcp://localhost:8080/DispatchingSvc/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="e6be3270-8866-4ecb-8604-538a52aa005f" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="4222e255-6fee-4fe3-b719-ea6f3b4ec0e4" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="47f2880f-01c9-4db8-b59e-9809c3f8d688" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
-    <MetadataFile FileName="Middleware.xsd" MetadataType="Schema" ID="c81d82ee-e3ab-4b72-9408-26781714cab9" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="3454bd7b-0749-4169-ad29-06558d0258fb" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="1424897f-1cec-4c33-8cb6-c5a5d9138019" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="73ece68e-6c45-4fba-bfb1-0f7fe83ea575" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="e60c58a2-59c8-4497-aeb9-45ffa0c6768a" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
+    <MetadataFile FileName="Middleware.Models.xsd" MetadataType="Schema" ID="3a41ca5c-8053-498f-9879-fc8d3dd24b19" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

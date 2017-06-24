@@ -18,13 +18,15 @@ namespace Middleware
         private const String QUERY_PRODUCER = "decodeAsk";
 
         private AuthService auth;
+        private User user;
         private DecodeFileService decodeFileService;
 
         public DispatchingService()
         {
             // init authService and DecodeFileService
             auth = new AuthService();
-            decodeFileService = new DecodeFileService(URL_LISTENER, QUERY_LISTENER, URL_PRODUCER, QUERY_PRODUCER);
+            user = new User();
+            //decodeFileService = new DecodeFileService(URL_LISTENER, QUERY_LISTENER, URL_PRODUCER, QUERY_PRODUCER);
             Trace.WriteLine("Dispatching initialized");
         }
 
@@ -33,20 +35,20 @@ namespace Middleware
             Response response = new Response();
 
             // TODO: remove 
-            Trace.WriteLine("Dispatcher called \n");
+            Trace.WriteLine("Dispatcher called");
             Trace.WriteLine("app token : " + msg.Application.Name);
             Trace.WriteLine(msg.Application.Token);
 
             // check the if the app token is valid
             if (! "zEAxsZ3iNwCfWWn46c".Equals(msg.Application.Token))
             {
-                Trace.WriteLine("Someone tried to connect and is not allowed to use our server \n");
+                Trace.WriteLine("Someone tried to connect and is not allowed to use our server");
                 response.Status = "BAD_APP_TOKENS";
                 response.Description = "Your application is not allowed to use our server";
                 return response;
             }
             
-            Trace.Write("App token validated \n");
+            Trace.WriteLine("App token validated");
             if ("authentication".Equals(msg.Operation))
             {
                 User user = (User) msg.Item;
@@ -98,6 +100,11 @@ namespace Middleware
             }
 
             return response;
+        }
+
+        public User getUser()
+        {
+            return auth.getUser();
         }
     }
 }

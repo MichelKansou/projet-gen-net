@@ -15,44 +15,29 @@ namespace Client.DispatchingServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Message", Namespace="http://schemas.datacontract.org/2004/07/Middleware")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Message", Namespace="http://schemas.datacontract.org/2004/07/Middleware.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
-    public partial struct Message : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.DispatchingServiceReference.Application))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.DispatchingServiceReference.Response))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.DispatchingServiceReference.User))]
+    public partial class Message : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string app_nameField;
+        private Client.DispatchingServiceReference.Application applicationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string app_tokenField;
+        private object itemField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string app_versionField;
+        private string operationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private object[] dataField;
+        private string userTokenField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string op_infosField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string op_nameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool op_statutField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string user_passwordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string user_tokenField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string usernameField;
-        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
                 return this.extensionDataField;
@@ -63,118 +48,306 @@ namespace Client.DispatchingServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string app_name {
+        public Client.DispatchingServiceReference.Application application {
             get {
-                return this.app_nameField;
+                return this.applicationField;
             }
             set {
-                if ((object.ReferenceEquals(this.app_nameField, value) != true)) {
-                    this.app_nameField = value;
-                    this.RaisePropertyChanged("app_name");
+                if ((object.ReferenceEquals(this.applicationField, value) != true)) {
+                    this.applicationField = value;
+                    this.RaisePropertyChanged("application");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string app_token {
+        public object item {
             get {
-                return this.app_tokenField;
+                return this.itemField;
             }
             set {
-                if ((object.ReferenceEquals(this.app_tokenField, value) != true)) {
-                    this.app_tokenField = value;
-                    this.RaisePropertyChanged("app_token");
+                if ((object.ReferenceEquals(this.itemField, value) != true)) {
+                    this.itemField = value;
+                    this.RaisePropertyChanged("item");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string app_version {
+        public string operation {
             get {
-                return this.app_versionField;
+                return this.operationField;
             }
             set {
-                if ((object.ReferenceEquals(this.app_versionField, value) != true)) {
-                    this.app_versionField = value;
-                    this.RaisePropertyChanged("app_version");
+                if ((object.ReferenceEquals(this.operationField, value) != true)) {
+                    this.operationField = value;
+                    this.RaisePropertyChanged("operation");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public object[] data {
+        public string userToken {
             get {
-                return this.dataField;
+                return this.userTokenField;
             }
             set {
-                if ((object.ReferenceEquals(this.dataField, value) != true)) {
-                    this.dataField = value;
-                    this.RaisePropertyChanged("data");
+                if ((object.ReferenceEquals(this.userTokenField, value) != true)) {
+                    this.userTokenField = value;
+                    this.RaisePropertyChanged("userToken");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Application", Namespace="http://schemas.datacontract.org/2004/07/Middleware.Models")]
+    [System.SerializableAttribute()]
+    public partial class Application : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TokenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VersionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string op_infos {
+        public string Token {
             get {
-                return this.op_infosField;
+                return this.TokenField;
             }
             set {
-                if ((object.ReferenceEquals(this.op_infosField, value) != true)) {
-                    this.op_infosField = value;
-                    this.RaisePropertyChanged("op_infos");
+                if ((object.ReferenceEquals(this.TokenField, value) != true)) {
+                    this.TokenField = value;
+                    this.RaisePropertyChanged("Token");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string op_name {
+        public string Version {
             get {
-                return this.op_nameField;
+                return this.VersionField;
             }
             set {
-                if ((object.ReferenceEquals(this.op_nameField, value) != true)) {
-                    this.op_nameField = value;
-                    this.RaisePropertyChanged("op_name");
+                if ((object.ReferenceEquals(this.VersionField, value) != true)) {
+                    this.VersionField = value;
+                    this.RaisePropertyChanged("Version");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Response", Namespace="http://schemas.datacontract.org/2004/07/Middleware.Models")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.DispatchingServiceReference.Message))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.DispatchingServiceReference.Application))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.DispatchingServiceReference.User))]
+    public partial class Response : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private object itemField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string statusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool op_statut {
+        public object item {
             get {
-                return this.op_statutField;
+                return this.itemField;
             }
             set {
-                if ((this.op_statutField.Equals(value) != true)) {
-                    this.op_statutField = value;
-                    this.RaisePropertyChanged("op_statut");
+                if ((object.ReferenceEquals(this.itemField, value) != true)) {
+                    this.itemField = value;
+                    this.RaisePropertyChanged("item");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string user_password {
+        public string status {
             get {
-                return this.user_passwordField;
+                return this.statusField;
             }
             set {
-                if ((object.ReferenceEquals(this.user_passwordField, value) != true)) {
-                    this.user_passwordField = value;
-                    this.RaisePropertyChanged("user_password");
+                if ((object.ReferenceEquals(this.statusField, value) != true)) {
+                    this.statusField = value;
+                    this.RaisePropertyChanged("status");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/Middleware.Models", IsReference=true)]
+    [System.SerializableAttribute()]
+    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime lastConnectionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string passwordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string tokenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime tokenExpirationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string usernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime lastConnection {
+            get {
+                return this.lastConnectionField;
+            }
+            set {
+                if ((this.lastConnectionField.Equals(value) != true)) {
+                    this.lastConnectionField = value;
+                    this.RaisePropertyChanged("lastConnection");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string user_token {
+        public string password {
             get {
-                return this.user_tokenField;
+                return this.passwordField;
             }
             set {
-                if ((object.ReferenceEquals(this.user_tokenField, value) != true)) {
-                    this.user_tokenField = value;
-                    this.RaisePropertyChanged("user_token");
+                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
+                    this.passwordField = value;
+                    this.RaisePropertyChanged("password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string token {
+            get {
+                return this.tokenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tokenField, value) != true)) {
+                    this.tokenField = value;
+                    this.RaisePropertyChanged("token");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime tokenExpiration {
+            get {
+                return this.tokenExpirationField;
+            }
+            set {
+                if ((this.tokenExpirationField.Equals(value) != true)) {
+                    this.tokenExpirationField = value;
+                    this.RaisePropertyChanged("tokenExpiration");
                 }
             }
         }
@@ -194,7 +367,7 @@ namespace Client.DispatchingServiceReference {
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
-        void RaisePropertyChanged(string propertyName) {
+        protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
@@ -207,10 +380,16 @@ namespace Client.DispatchingServiceReference {
     public interface IDispatchingService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDispatchingService/Dispatcher", ReplyAction="http://tempuri.org/IDispatchingService/DispatcherResponse")]
-        Client.DispatchingServiceReference.Message Dispatcher(Client.DispatchingServiceReference.Message msg);
+        Client.DispatchingServiceReference.Response Dispatcher(Client.DispatchingServiceReference.Message msg);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDispatchingService/Dispatcher", ReplyAction="http://tempuri.org/IDispatchingService/DispatcherResponse")]
-        System.Threading.Tasks.Task<Client.DispatchingServiceReference.Message> DispatcherAsync(Client.DispatchingServiceReference.Message msg);
+        System.Threading.Tasks.Task<Client.DispatchingServiceReference.Response> DispatcherAsync(Client.DispatchingServiceReference.Message msg);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDispatchingService/getUser", ReplyAction="http://tempuri.org/IDispatchingService/getUserResponse")]
+        Client.DispatchingServiceReference.User getUser();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDispatchingService/getUser", ReplyAction="http://tempuri.org/IDispatchingService/getUserResponse")]
+        System.Threading.Tasks.Task<Client.DispatchingServiceReference.User> getUserAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -240,12 +419,20 @@ namespace Client.DispatchingServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public Client.DispatchingServiceReference.Message Dispatcher(Client.DispatchingServiceReference.Message msg) {
+        public Client.DispatchingServiceReference.Response Dispatcher(Client.DispatchingServiceReference.Message msg) {
             return base.Channel.Dispatcher(msg);
         }
         
-        public System.Threading.Tasks.Task<Client.DispatchingServiceReference.Message> DispatcherAsync(Client.DispatchingServiceReference.Message msg) {
+        public System.Threading.Tasks.Task<Client.DispatchingServiceReference.Response> DispatcherAsync(Client.DispatchingServiceReference.Message msg) {
             return base.Channel.DispatcherAsync(msg);
+        }
+        
+        public Client.DispatchingServiceReference.User getUser() {
+            return base.Channel.getUser();
+        }
+        
+        public System.Threading.Tasks.Task<Client.DispatchingServiceReference.User> getUserAsync() {
+            return base.Channel.getUserAsync();
         }
     }
 }

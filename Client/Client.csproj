@@ -100,13 +100,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\DispatchingServiceReference\Arrays.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\DispatchingServiceReference\Client.DispatchingServiceReference.Message.datasource">
+    <None Include="Connected Services\DispatchingServiceReference\Client.DispatchingServiceReference.Response.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\DispatchingServiceReference\Middleware.xsd">
+    <None Include="Connected Services\DispatchingServiceReference\Client.DispatchingServiceReference.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DispatchingServiceReference\Middleware.Models.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\DispatchingServiceReference\service.wsdl" />
