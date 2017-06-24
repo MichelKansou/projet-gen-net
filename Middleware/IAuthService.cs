@@ -15,5 +15,7 @@ namespace Middleware
 
         [OperationContract]
         bool CheckUser(string username, string password);
+
+        bool CheckToken();
     }
 }

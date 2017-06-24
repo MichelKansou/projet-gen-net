@@ -65,7 +65,7 @@ namespace Middleware
             {
                 // check if the token is valid
                 // TODO : chek if token is valid
-                if (true)
+                if (auth.CheckToken())
                 {
                     // execute the matching operation
                     switch (msg.Operation)
