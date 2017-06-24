@@ -11,10 +11,10 @@ namespace Middleware.Models
         [DataMember]
         private String description;
         [DataMember]
-        private object items;
+        private object item;
 
         public String Status { get => status; set => status = value; }
         public String Description { get => description; set => description = value; }
-        public object Items { get => items; set => items = value; }
+        public object Item { get => item; set => item = value; }
     }
 }

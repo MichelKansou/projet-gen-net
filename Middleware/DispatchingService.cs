@@ -34,13 +34,11 @@ namespace Middleware
 
             // TODO: remove 
             Trace.WriteLine("Dispatcher called \n");
-            Trace.WriteLine("app token : " + msg.App_token);
-            Trace.WriteLine("username : " + msg.Username);
-            Trace.WriteLine("password : " + msg.User_password);
-            Trace.WriteLine(msg.App_token);
+            Trace.WriteLine("app token : " + msg.Application.Name);
+            Trace.WriteLine(msg.Application.Token);
 
             // check the if the app token is valid
-            if (! "zEAxsZ3iNwCfWWn46c".Equals(msg.App_token))
+            if (! "zEAxsZ3iNwCfWWn46c".Equals(msg.Application.Token))
             {
                 Trace.WriteLine("Someone tried to connect and is not allowed to use our server \n");
                 response.Status = "BAD_APP_TOKENS";
@@ -49,12 +47,19 @@ namespace Middleware
             }
             
             Trace.Write("App token validated \n");
-            if ("authentication".Equals(msg.Op_infos))
+            if ("authentication".Equals(msg.Operation))
             {
-                // TODO: check if i's ok
-                // if not, return an erre
-                response.Items = new object[1] { auth.Authenticate(msg.Username, msg.User_password) };
-                response.Status = "SUCCESS";
+                User user = (User) msg.Item;
+                response.Item = auth.Authenticate(user.Username, user.Password);
+                if (response.Item == null)
+                {
+                    response.Status = "SUCCESS";
+                }
+                else
+                {
+                    response.Status = "INVALID_USER";
+                    response.Status = "The username or the password are invalid.";
+                }
             }
             else
             {
@@ -63,24 +68,23 @@ namespace Middleware
                 if (true)
                 {
                     // execute the matching operation
-                    switch (msg.Op_infos)
+                    switch (msg.Operation)
                     {
                         case "decode":
                             // decode the file
-                            DecodeFileOut result = decodeFileService.DecodeFile((DecodeFileIn) msg.Data[0]);
-                            if (result == null)
+                            response.Item = decodeFileService.DecodeFile((DecodeFileIn) msg.Item);
+                            if (response.Item == null)
                             {
                                 response.Description = "Impossible to decode the file.";
                                 response.Status = "DECODE_IMPOSSIBLE";
                             }
                             else
                             {
-                                response.Items = new object[1] { result };
                                 response.Status = "SUCCESS";
                             }
                             break;
                         default:
-                            response.Description = "Operation " + msg.Op_name + " doesn't exist";
+                            response.Description = "Operation " + msg.Operation + " doesn't exist";
                             response.Status = "NO_MATCHING_OPERATION";
                             Trace.WriteLine(response.Description);
                             break;
@@ -88,7 +92,7 @@ namespace Middleware
                 }
                 else
                 {
-                    response.Description = "The user token " + msg.User_token + " is not valid.";
+                    response.Description = "The user token " + msg.UserToken + " is not valid.";
                     response.Status = "INVALID_USER_TOKEN";
                 }
             }
