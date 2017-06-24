@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Middleware.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -11,35 +12,17 @@ namespace Middleware
     public struct Message
     {
         [DataMember]
-        private bool op_statut;
+        private string operation;
         [DataMember]
-        private string op_name;
+        private Application application;
         [DataMember]
-        private string op_infos;
+        private string userToken;
         [DataMember]
-        private string app_name;
-        [DataMember]
-        private string app_version;
-        [DataMember]
-        private string app_token;
-        [DataMember]
-        private string username;
-        [DataMember]
-        private string user_password;
-        [DataMember]
-        private string user_token;
-        [DataMember]
-        private object[] data;
+        private object item;
 
-        public bool Op_statut { get => op_statut; set => op_statut = value; }
-        public string Op_name { get => op_name; set => op_name = value; }
-        public string Op_infos { get => op_infos; set => op_infos = value; }
-        public string App_name { get => app_name; set => app_name = value; }
-        public string App_version { get => app_version; set => app_version = value; }
-        public string App_token { get => app_token; set => app_token = value; }
-        public string Username { get => username; set => username = value; }
-        public string User_password { get => user_password; set => user_password = value; }
-        public string User_token { get => user_token; set => user_token = value; }
-        public object[] Data { get => data; set => data = value; }
+        public string Operation { get => operation; set => operation = value; }
+        public Application Application { get => application; set => application = value; }
+        public string UserToken { get => userToken; set => userToken = value; }
+        public object Item { get => item; set => item = value; }
     }
 }

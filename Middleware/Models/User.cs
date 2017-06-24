@@ -15,16 +15,16 @@ namespace Middleware
         [DataMember]
         private string password;
         [DataMember]
-        private string user_token;
+        private string token;
         [DataMember]
-        DateTime last_connection;
+        DateTime lastConnection;
         [DataMember]
-        DateTime token_expiration;
+        DateTime tokenExpiration;
 
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
-        public string User_token { get => user_token; set => user_token = value; }
-        public DateTime Last_connection { get => last_connection; set => last_connection = value; }
-        public DateTime Token_expiration { get => token_expiration; set => token_expiration = value; }
+        public string Token { get => token; set => token = value; }
+        public DateTime LastConnection { get => lastConnection; set => lastConnection = value; }
+        public DateTime TokenExpiration { get => tokenExpiration; set => tokenExpiration = value; }
     }
 }
