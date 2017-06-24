@@ -49,6 +49,7 @@
     <Compile Include="AuthService.cs" />
     <Compile Include="IAuthService.cs" />
     <Compile Include="IDispatchingService.cs" />
+    <Compile Include="Models\Application.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,7 +61,12 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DecodeFileLib\DecodeFileLib.csproj">
+      <Project>{016c57d9-939a-45dd-ab8c-f200d11b04bf}</Project>
+      <Name>DecodeFileLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <VSToolsPath Condition="'$(VSToolsPath)' == '' and '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' != '11.0'">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

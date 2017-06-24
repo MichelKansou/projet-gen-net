@@ -36,16 +36,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Apache.NMS">
-      <HintPath>..\..\..\Apache.NMS.ActiveMQ-1.7.2-bin\lib\Apache.NMS\net-4.0\Apache.NMS.dll</HintPath>
+      <HintPath>..\resources\Apache.NMS.ActiveMQ-1.7.2-bin\lib\Apache.NMS\net-4.0\Apache.NMS.dll</HintPath>
     </Reference>
     <Reference Include="Apache.NMS.ActiveMQ">
-      <HintPath>..\..\..\Apache.NMS.ActiveMQ-1.7.2-bin\build\net-4.0\release\Apache.NMS.ActiveMQ.dll</HintPath>
+      <HintPath>..\resources\Apache.NMS.ActiveMQ-1.7.2-bin\build\net-4.0\debug\Apache.NMS.ActiveMQ.dll</HintPath>
     </Reference>
     <Reference Include="Apache.NMS.ActiveMQ.Test">
-      <HintPath>..\..\..\Apache.NMS.ActiveMQ-1.7.2-bin\build\net-4.0\release\Apache.NMS.ActiveMQ.Test.dll</HintPath>
+      <HintPath>..\resources\Apache.NMS.ActiveMQ-1.7.2-bin\build\net-4.0\debug\Apache.NMS.ActiveMQ.Test.dll</HintPath>
     </Reference>
     <Reference Include="Apache.NMS.Test">
-      <HintPath>..\..\..\Apache.NMS.ActiveMQ-1.7.2-bin\lib\Apache.NMS\net-4.0\Apache.NMS.Test.dll</HintPath>
+      <HintPath>..\resources\Apache.NMS.ActiveMQ-1.7.2-bin\lib\Apache.NMS\net-4.0\Apache.NMS.Test.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
