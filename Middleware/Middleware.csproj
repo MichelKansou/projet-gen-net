@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthService.cs" />
+    <Compile Include="Dao\UserDao.cs" />
     <Compile Include="IAuthService.cs" />
     <Compile Include="IDispatchingService.cs" />
     <Compile Include="Models\Application.cs" />

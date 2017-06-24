@@ -17,9 +17,6 @@ namespace Client.DispatchingServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Message", Namespace="http://schemas.datacontract.org/2004/07/Middleware.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.DispatchingServiceReference.Application))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.DispatchingServiceReference.Response))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.DispatchingServiceReference.User))]
     public partial class Message : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -29,10 +26,13 @@ namespace Client.DispatchingServiceReference {
         private Client.DispatchingServiceReference.Application applicationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private object itemField;
+        private Client.DispatchingServiceReference.DecodeFileIn decodeFileInField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string operationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Client.DispatchingServiceReference.User userField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string userTokenField;
@@ -61,14 +61,14 @@ namespace Client.DispatchingServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public object item {
+        public Client.DispatchingServiceReference.DecodeFileIn decodeFileIn {
             get {
-                return this.itemField;
+                return this.decodeFileInField;
             }
             set {
-                if ((object.ReferenceEquals(this.itemField, value) != true)) {
-                    this.itemField = value;
-                    this.RaisePropertyChanged("item");
+                if ((object.ReferenceEquals(this.decodeFileInField, value) != true)) {
+                    this.decodeFileInField = value;
+                    this.RaisePropertyChanged("decodeFileIn");
                 }
             }
         }
@@ -82,6 +82,19 @@ namespace Client.DispatchingServiceReference {
                 if ((object.ReferenceEquals(this.operationField, value) != true)) {
                     this.operationField = value;
                     this.RaisePropertyChanged("operation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Client.DispatchingServiceReference.User user {
+            get {
+                return this.userField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.userField, value) != true)) {
+                    this.userField = value;
+                    this.RaisePropertyChanged("user");
                 }
             }
         }
@@ -188,24 +201,21 @@ namespace Client.DispatchingServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Response", Namespace="http://schemas.datacontract.org/2004/07/Middleware.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DecodeFileIn", Namespace="http://schemas.datacontract.org/2004/07/DecodeFileLib")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.DispatchingServiceReference.Message))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.DispatchingServiceReference.Application))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.DispatchingServiceReference.User))]
-    public partial class Response : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class DecodeFileIn : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descriptionField;
+        private string ContentField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private object itemField;
+        private string FileNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string statusField;
+        private string Md5Field;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -218,40 +228,40 @@ namespace Client.DispatchingServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string description {
+        public string Content {
             get {
-                return this.descriptionField;
+                return this.ContentField;
             }
             set {
-                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
-                    this.descriptionField = value;
-                    this.RaisePropertyChanged("description");
+                if ((object.ReferenceEquals(this.ContentField, value) != true)) {
+                    this.ContentField = value;
+                    this.RaisePropertyChanged("Content");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public object item {
+        public string FileName {
             get {
-                return this.itemField;
+                return this.FileNameField;
             }
             set {
-                if ((object.ReferenceEquals(this.itemField, value) != true)) {
-                    this.itemField = value;
-                    this.RaisePropertyChanged("item");
+                if ((object.ReferenceEquals(this.FileNameField, value) != true)) {
+                    this.FileNameField = value;
+                    this.RaisePropertyChanged("FileName");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string status {
+        public string Md5 {
             get {
-                return this.statusField;
+                return this.Md5Field;
             }
             set {
-                if ((object.ReferenceEquals(this.statusField, value) != true)) {
-                    this.statusField = value;
-                    this.RaisePropertyChanged("status");
+                if ((object.ReferenceEquals(this.Md5Field, value) != true)) {
+                    this.Md5Field = value;
+                    this.RaisePropertyChanged("Md5");
                 }
             }
         }
@@ -361,6 +371,176 @@ namespace Client.DispatchingServiceReference {
                 if ((object.ReferenceEquals(this.usernameField, value) != true)) {
                     this.usernameField = value;
                     this.RaisePropertyChanged("username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Response", Namespace="http://schemas.datacontract.org/2004/07/Middleware.Models")]
+    [System.SerializableAttribute()]
+    public partial class Response : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Client.DispatchingServiceReference.DecodeFileOut decodeFileoutField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string statusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Client.DispatchingServiceReference.User userField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Client.DispatchingServiceReference.DecodeFileOut decodeFileout {
+            get {
+                return this.decodeFileoutField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.decodeFileoutField, value) != true)) {
+                    this.decodeFileoutField = value;
+                    this.RaisePropertyChanged("decodeFileout");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string status {
+            get {
+                return this.statusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.statusField, value) != true)) {
+                    this.statusField = value;
+                    this.RaisePropertyChanged("status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Client.DispatchingServiceReference.User user {
+            get {
+                return this.userField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.userField, value) != true)) {
+                    this.userField = value;
+                    this.RaisePropertyChanged("user");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DecodeFileOut", Namespace="http://schemas.datacontract.org/2004/07/DecodeFileLib")]
+    [System.SerializableAttribute()]
+    public partial class DecodeFileOut : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string KeyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SecretField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileName {
+            get {
+                return this.FileNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileNameField, value) != true)) {
+                    this.FileNameField = value;
+                    this.RaisePropertyChanged("FileName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Key {
+            get {
+                return this.KeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KeyField, value) != true)) {
+                    this.KeyField = value;
+                    this.RaisePropertyChanged("Key");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Secret {
+            get {
+                return this.SecretField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SecretField, value) != true)) {
+                    this.SecretField = value;
+                    this.RaisePropertyChanged("Secret");
                 }
             }
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DecodeFileLib;
+using System;
 using System.Runtime.Serialization;
 
 namespace Middleware.Models
@@ -11,10 +12,13 @@ namespace Middleware.Models
         [DataMember]
         private String description;
         [DataMember]
-        private object item;
+        private User user;
+        [DataMember]
+        private DecodeFileOut decodeFileout;
 
         public String Status { get => status; set => status = value; }
         public String Description { get => description; set => description = value; }
-        public object Item { get => item; set => item = value; }
+        public User User { get => user; set => user = value; }
+        public DecodeFileOut DecodeFileOut { get => decodeFileout; set => decodeFileout = value; }
     }
 }

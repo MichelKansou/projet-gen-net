@@ -26,6 +26,7 @@
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="73ece68e-6c45-4fba-bfb1-0f7fe83ea575" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="e60c58a2-59c8-4497-aeb9-45ffa0c6768a" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
     <MetadataFile FileName="Middleware.Models.xsd" MetadataType="Schema" ID="3a41ca5c-8053-498f-9879-fc8d3dd24b19" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
+    <MetadataFile FileName="DecodeFileLib.xsd" MetadataType="Schema" ID="bbef3904-3b68-447e-88ab-ab96371396c1" SourceId="1" SourceUrl="net.tcp://localhost:8080/DispatchingSvc/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

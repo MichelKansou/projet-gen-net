@@ -12,15 +12,9 @@ namespace Middleware
     interface IAuthService
     {
         [OperationContract]
-        User Authenticate(string username, string password);
+        User Authenticate(String username, String password);
 
         [OperationContract]
-        bool CheckUser(string username, string password);
-
-        [OperationContract]
-        bool CheckToken();
-
-        [OperationContract]
-        User getUser();
+        User CheckToken(String token);
     }
 }

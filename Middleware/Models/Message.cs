@@ -1,4 +1,5 @@
-﻿using Middleware.Models;
+﻿using DecodeFileLib;
+using Middleware.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,13 +18,15 @@ namespace Middleware.Models
         private Application application;
         [DataMember]
         private string userToken;
-
         [DataMember]
-        private object item;
+        private User user;
+        [DataMember]
+        private DecodeFileIn decodeFileIn;
 
         public string Operation { get => operation; set => operation = value; }
         public Application Application { get => application; set => application = value; }
         public string UserToken { get => userToken; set => userToken = value; }
-        public object Item { get => item; set => item = value; }
+        public User User { get => user; set => user = value; }
+        public DecodeFileIn DecodeFileIn { get => decodeFileIn; set => decodeFileIn = value; }
     }
 }

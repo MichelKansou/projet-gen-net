@@ -106,6 +106,9 @@
     <None Include="Connected Services\DispatchingServiceReference\Client.DispatchingServiceReference.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\DispatchingServiceReference\DecodeFileLib.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\DispatchingServiceReference\Middleware.Models.xsd">
       <SubType>Designer</SubType>
     </None>

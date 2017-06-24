@@ -36,7 +36,10 @@ namespace Middleware
 
             // TODO: remove 
             Trace.WriteLine("Dispatcher called");
+            Trace.WriteLine("Operation : " + msg.Operation);
             Trace.WriteLine("app token : " + msg.Application.Name);
+            Trace.WriteLine("app token : " + msg.Application.Version);
+            Trace.WriteLine("app token : " + msg.Application.Token);
             Trace.WriteLine(msg.Application.Token);
 
             // check the if the app token is valid
@@ -51,31 +54,30 @@ namespace Middleware
             Trace.WriteLine("App token validated");
             if ("authentication".Equals(msg.Operation))
             {
-                User user = (User) msg.Item;
-                response.Item = auth.Authenticate(user.Username, user.Password);
-                if (response.Item == null)
+                User user = msg.User;
+                response.User = auth.Authenticate(user.Username, user.Password);
+                if (response.User != null)
                 {
                     response.Status = "SUCCESS";
                 }
                 else
                 {
                     response.Status = "INVALID_USER";
-                    response.Status = "The username or the password are invalid.";
+                    response.Description = "The username or the password are invalid.";
                 }
             }
             else
             {
                 // check if the token is valid
-                // TODO : chek if token is valid
-                if (auth.CheckToken())
+                if (auth.CheckToken(msg.UserToken) != null)
                 {
                     // execute the matching operation
                     switch (msg.Operation)
                     {
                         case "decode":
                             // decode the file
-                            response.Item = decodeFileService.DecodeFile((DecodeFileIn) msg.Item);
-                            if (response.Item == null)
+                            response.DecodeFileOut = decodeFileService.DecodeFile(msg.DecodeFileIn);
+                            if (response.DecodeFileOut == null)
                             {
                                 response.Description = "Impossible to decode the file.";
                                 response.Status = "DECODE_IMPOSSIBLE";
@@ -99,12 +101,9 @@ namespace Middleware
                 }
             }
 
-            return response;
-        }
+            Trace.WriteLine("Return response with status " + response.Status);
 
-        public User getUser()
-        {
-            return auth.getUser();
+            return response;
         }
     }
 }

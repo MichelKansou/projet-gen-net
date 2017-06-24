@@ -1,4 +1,5 @@
-﻿using Middleware.Models;
+﻿using Middleware.Dao;
+using Middleware.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -6,6 +7,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
 
@@ -13,124 +15,88 @@ namespace Middleware
 {
     public class AuthService : IAuthService
     {
-        private SqlConnection connection;
-        private User user;
+        private UserDao daoUser;
 
         public AuthService()
         {
-            user = new User();
-            connection = new SqlConnection("Data Source=DESKTOP-EQTGMTD;Initial Catalog=projet_gen;Integrated Security=True");
-            Trace.WriteLine("AuthService initialize");
+            this.daoUser = new UserDao();
+            Trace.WriteLine("AuthService initialized");
         }
 
-        public User Authenticate(string username, string password)
+        public User Authenticate(String username, String password)
         {
+            password = generateHash(password);
 
-            bool validation = CheckUser(username, password) ? CheckToken() : false;
-
-            return validation ? getUser() : null;
-        }
-
-        public bool CheckToken()
-        {
-            if (user.Token != null)
+            // check if the username and password are valid
+            User user = this.daoUser.FindByUsernameAndPassword(username, password);
+            if (user == null) return null;
+            if (user.Token == null || user.TokenExpiration < DateTime.Now)
             {
-                // TODO : check if token is not expired
-                using (connection)
-                {
-                    string request = "Select * from users where user_token=@userToken";
-                    SqlCommand cmd = new SqlCommand(request, connection);
-                    cmd.Parameters.AddWithValue("@userToken", user.Token);
-                    connection.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        DateTime currentTime = DateTime.Now;
-                        while (reader.Read())
-                        {
-                            int result = DateTime.Compare((DateTime)reader["token_expiration"], currentTime);
-                            if (result < 0)
-                            {
-                                GenerateToken();
-                            }
-                        }
-                        connection.Close();
-                    }
-                }
+                // generate a new token
+                user = GenerateToken(user);
             }
             else
             {
-                GenerateToken();
+                // increase token expiration
+                user.TokenExpiration = DateTime.Now.AddMinutes(30);
+                this.daoUser.UpdateExpirationDate(user);
             }
-            return true;   
+            
+            return user;
+        }
+        
+        public User CheckToken(String token)
+        {
+            if (token == null) return null;
+            User user = this.daoUser.FindByToken(token);
+            if (user == null || user.TokenExpiration < DateTime.Now)
+            {
+                return null;
+            }
+            else
+            {
+                // increase token expiration
+                user.TokenExpiration = DateTime.Now.AddMinutes(30);
+                this.daoUser.UpdateExpirationDate(user);
+            }
+            return user;
         }
 
+        private String generateHash(String text)
+        {
+            // given, a password in a string
+            string password = @text;
 
-        private void GenerateToken()
+            // byte array representation of that string
+            byte[] encodedPassword = new UTF8Encoding().GetBytes(password);
+
+            // need MD5 to calculate the hash
+            byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(encodedPassword);
+
+            // string representation (similar to UNIX format)
+            return BitConverter.ToString(hash)
+               // without dashes
+               .Replace("-", string.Empty)
+               // make lowercase
+               .ToLower();
+        }
+        private User GenerateToken(User user)
         {
             Guid g = Guid.NewGuid();
-            string generatedToken = Convert.ToBase64String(g.ToByteArray());
+            String generatedToken = Convert.ToBase64String(g.ToByteArray());
             generatedToken = generatedToken.Replace("=", "");
             generatedToken = generatedToken.Replace("+", "");
+            generatedToken = generatedToken.Replace("/", "");
 
-            using (connection)
-            {
-                string request = "INSERT into users (user_token, last_connection, token_expiration) VALUES (@userToken, @lastConnection, @tokenExpiration) where username=@username and password=@password";
-                SqlCommand cmd = new SqlCommand(request, connection);
-                cmd.Parameters.AddWithValue("@userToken", generatedToken);
-                cmd.Parameters.AddWithValue("@lastConnection", DateTime.Now);
-                cmd.Parameters.AddWithValue("@tokenExpiration", DateTime.Now.AddMinutes(30));
-                cmd.Parameters.AddWithValue("@username", user.Username);
-                cmd.Parameters.AddWithValue("@password", user.Password);
-                try
-                {
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-                }
-                catch (SqlException sqlEx)
-                {
-                    Trace.WriteLine("SQL query : " + sqlEx.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
+            // map the user with new token information
+            user.Token = generatedToken;
+            user.TokenExpiration = DateTime.Now.AddMinutes(30);
+            user.LastConnection = DateTime.Now;
 
-        public bool CheckUser(string username, string password)
-        {
-            this.connection = new SqlConnection("Data Source=DESKTOP-EQTGMTD;Initial Catalog=projet_gen;Integrated Security=True");
-            User matchingUser = null;
-            using (connection)
-            {
-                string request = "Select * from users where username=@username and password=@password";
-                SqlCommand cmd = new SqlCommand(request, connection);
-                cmd.Parameters.AddWithValue("@username", username);
-                cmd.Parameters.AddWithValue("@password", password);
-                connection.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        matchingUser = new User()
-                        {
-                            Username = reader["username"].ToString(),
-                            Password = reader["password"].ToString(),
-                            Token = reader["user_token"].ToString(),
-                            LastConnection = (DateTime)reader["last_connection"],
-                            TokenExpiration = (DateTime)reader["token_expiration"]
-                        };
-                    }
-                    connection.Close();
-                }
-            }
-            this.user = matchingUser;
-            return matchingUser != null ? true : false;
-        }
+            // update the user
+            this.daoUser.UpdateUser(user);
 
-        public User getUser()
-        {
-            return this.user;
+            return user;
         }
     }
 }

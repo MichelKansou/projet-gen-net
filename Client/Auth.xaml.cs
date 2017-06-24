@@ -29,6 +29,8 @@ namespace Client
         private DispatchingServiceClient proxy;
         private User user;
 
+        private DispatchingServiceReference.Application application;
+
 
         public bool loading
         {
@@ -46,11 +48,11 @@ namespace Client
         public MainWindow()
         {
             InitializeComponent();
+            this.application = InitApplicationInfo();
             this.loading = false;
             this.proxy = new DispatchingServiceClient();
             this.msg = new Message();
             this.msg.application = new DispatchingServiceReference.Application();
-            Initialize_msg();
             Console.WriteLine("initialize message");
             //Console.Write(this.msg.app_token + "\n");
         }
@@ -64,18 +66,20 @@ namespace Client
                 password = passwordTextBox.Text
             };
 
-            this.msg.operation = "authentication";
-            this.msg.item = this.user as Object;
-            Console.WriteLine("Operation " + this.msg.operation + " Executed");
-
-            Response response = this.proxy.Dispatcher(this.msg);
-
-            Console.WriteLine("Operation " + this.msg.operation  + " --- " + response.status);
+            Message request = new Message()
+            {
+                application = this.application,
+                operation = "authentication",
+                user = user
+            };
+            
+            Response response = this.proxy.Dispatcher(request);
+            Console.WriteLine("Operation " + request.operation  + " --- " + response.status);
 
             if (response.status == "SUCCESS")
             {
                 stopLoading();
-                User connectedUser = (User)response.item;
+                User connectedUser = response.user;
                 Console.WriteLine("User info : ");
                 Console.WriteLine("Username : " + connectedUser.username);
                 Console.WriteLine("Password : " + connectedUser.password);
@@ -83,8 +87,10 @@ namespace Client
                 Console.WriteLine("LastConnection : " + connectedUser.lastConnection);
                 Console.WriteLine("TokenExpiration : " + connectedUser.tokenExpiration);
                 MessageBox.Show("You are authenticated");
-            } else
+            }
+            else
             {
+
                 stopLoading();
                 MessageBox.Show("Error : Wrong username or password");
             }
@@ -92,13 +98,14 @@ namespace Client
 
         }
 
-        private void Initialize_msg()
+        private DispatchingServiceReference.Application InitApplicationInfo()
         {
-            
-            this.msg.application.Name = "gen-client";
-            this.msg.application.Version = "1.0";
-            this.msg.application.Token = "zEAxsZ3iNwCfWWn46c";
-            this.msg.item = null;
+            return new DispatchingServiceReference.Application
+            {
+                Name = "gen-client",
+                Version = "1.0",
+                Token = "zEAxsZ3iNwCfWWn46c"
+            };
         }
 
         private void usernameTextBox_TextChanged(object sender, TextChangedEventArgs e)
