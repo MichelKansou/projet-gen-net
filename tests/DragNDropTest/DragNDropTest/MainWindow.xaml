@@ -1,0 +1,38 @@
+﻿<Window x:Class="DragNDropTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DragNDropTest"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Margin="0,10,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <ListBox ItemsSource="{Binding Path=Files}" Grid.Row="1" Name="DropBox" HorizontalAlignment="Left" Height="242" Margin="4,1,0,0" VerticalAlignment="Top" Width="509" AllowDrop="True" Drop="DropBox_Drop" DragOver="DropBox_DragOver" DragLeave="DropBox_DragLeave" Background="#FFE2E2E2" FontSize="10">
+        </ListBox>
+        <StatusBar Grid.Row="2" Height="22" VerticalAlignment="Bottom">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto" MinWidth="100"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem Grid.Column="1"/>
+        </StatusBar>
+        <Label HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Label Content="Drop your files below to upload them" Width="503" HorizontalContentAlignment="Center"/>
+        </Label>
+    </Grid>
+</Window>
