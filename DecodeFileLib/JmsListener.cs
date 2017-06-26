@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Apache.NMS;
 using Apache.NMS.ActiveMQ;
+using System.Diagnostics;
 
 namespace DecodeFileLib
 {
@@ -15,7 +16,9 @@ namespace DecodeFileLib
 
         public Dictionary<String, DecodeResponse> Responses
         {
-            get { return this.responses; }
+            get {
+                Trace.WriteLine("count : " + this.responses.Count);
+                return this.responses; }
             set { this.responses = value; }
         }
 
@@ -37,11 +40,22 @@ namespace DecodeFileLib
             DecodeResponse response = new DecodeResponse();
             response.FileName = textMessage.Properties.GetString("fileName");
             response.Key = textMessage.Properties.GetString("key");
-            response.Secret = textMessage.ToString();
+            response.Secret = textMessage.Properties.GetString("secret");
 
-            if (!responses.ContainsKey(response.FileName))
+            Trace.WriteLine("Received : key : " + response.Key);
+
+            //if (!responses.ContainsKey(response.FileName))
             {
-                responses.Add(response.FileName, response);
+                response = "".Equals(response.Key) ? null : response;
+                if (response == null)
+                {
+                    Trace.WriteLine("Key is null");
+                }
+
+                DecodeFileService.AddResponses(response.FileName, response);
+
+                // Trace.WriteLine("count eee : " + Responses.Count);
+                // Trace.WriteLine("added : key : " + Responses[response.FileName].Key + " fileName "  + Responses[response.FileName].FileName);
             }
         }
     }

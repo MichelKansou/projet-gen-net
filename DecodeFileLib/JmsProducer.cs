@@ -22,7 +22,7 @@ namespace DecodeFileLib
             dest = session.GetQueue(queue);
         }
 
-        public void Send(String message, String fileName, String key, String md5)
+        public void Send(String message, String fileName, String key, String md5, int maxLoop)
         {
             using (IMessageProducer producer = session.CreateProducer(dest))
             {
@@ -30,6 +30,7 @@ namespace DecodeFileLib
                 textMessage.Properties.SetString("fileName", fileName);
                 textMessage.Properties.SetString("key", key);
                 textMessage.Properties.SetString("md5", md5);
+                textMessage.Properties.SetInt("maxLoop", maxLoop);
                 producer.Send(textMessage);
             }
         }
