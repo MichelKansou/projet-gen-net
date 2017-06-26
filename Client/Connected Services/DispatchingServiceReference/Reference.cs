@@ -564,12 +564,6 @@ namespace Client.DispatchingServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDispatchingService/Dispatcher", ReplyAction="http://tempuri.org/IDispatchingService/DispatcherResponse")]
         System.Threading.Tasks.Task<Client.DispatchingServiceReference.Response> DispatcherAsync(Client.DispatchingServiceReference.Message msg);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDispatchingService/getUser", ReplyAction="http://tempuri.org/IDispatchingService/getUserResponse")]
-        Client.DispatchingServiceReference.User getUser();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDispatchingService/getUser", ReplyAction="http://tempuri.org/IDispatchingService/getUserResponse")]
-        System.Threading.Tasks.Task<Client.DispatchingServiceReference.User> getUserAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -605,14 +599,6 @@ namespace Client.DispatchingServiceReference {
         
         public System.Threading.Tasks.Task<Client.DispatchingServiceReference.Response> DispatcherAsync(Client.DispatchingServiceReference.Message msg) {
             return base.Channel.DispatcherAsync(msg);
-        }
-        
-        public Client.DispatchingServiceReference.User getUser() {
-            return base.Channel.getUser();
-        }
-        
-        public System.Threading.Tasks.Task<Client.DispatchingServiceReference.User> getUserAsync() {
-            return base.Channel.getUserAsync();
         }
     }
 }

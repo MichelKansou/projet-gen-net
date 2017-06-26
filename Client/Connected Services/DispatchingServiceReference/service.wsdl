@@ -47,20 +47,10 @@
   <wsdl:message name="IDispatchingService_Dispatcher_OutputMessage">
     <wsdl:part name="parameters" element="tns:DispatcherResponse" />
   </wsdl:message>
-  <wsdl:message name="IDispatchingService_getUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:getUser" />
-  </wsdl:message>
-  <wsdl:message name="IDispatchingService_getUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getUserResponse" />
-  </wsdl:message>
   <wsdl:portType name="IDispatchingService">
     <wsdl:operation name="Dispatcher">
       <wsdl:input wsaw:Action="http://tempuri.org/IDispatchingService/Dispatcher" message="tns:IDispatchingService_Dispatcher_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDispatchingService/DispatcherResponse" message="tns:IDispatchingService_Dispatcher_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDispatchingService/getUser" message="tns:IDispatchingService_getUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDispatchingService/getUserResponse" message="tns:IDispatchingService_getUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SvcNetTcpBindingEndPoint" type="tns:IDispatchingService">
@@ -69,15 +59,6 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="Dispatcher">
       <soap12:operation soapAction="http://tempuri.org/IDispatchingService/Dispatcher" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getUser">
-      <soap12:operation soapAction="http://tempuri.org/IDispatchingService/getUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

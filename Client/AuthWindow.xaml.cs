@@ -1,4 +1,5 @@
 ﻿using Client.DispatchingServiceReference;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,15 +20,16 @@ using System.Windows.Shapes;
 namespace Client
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AuthWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, ILoader
+    public partial class AuthWindow : MetroWindow, ILoader
     {
         private bool _loading;
         private string _loaderText;
         private Message msg;
         private DispatchingServiceClient proxy;
         private User user;
+        private AppWindow appWindow;
 
         private DispatchingServiceReference.Application application;
 
@@ -45,16 +47,19 @@ namespace Client
             set { _loaderText = value; }
         }
 
-        public MainWindow()
+        public AuthWindow()
         {
             InitializeComponent();
             this.application = InitApplicationInfo();
+
+            // Initialiser la fenetre de l'application
+            this.appWindow = new AppWindow();
+
             this.loading = false;
             this.proxy = new DispatchingServiceClient();
             this.msg = new Message();
             this.msg.application = new DispatchingServiceReference.Application();
             Console.WriteLine("initialize message");
-            //Console.Write(this.msg.app_token + "\n");
         }
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
@@ -86,11 +91,18 @@ namespace Client
                 Console.WriteLine("Token : " + connectedUser.token);
                 Console.WriteLine("LastConnection : " + connectedUser.lastConnection);
                 Console.WriteLine("TokenExpiration : " + connectedUser.tokenExpiration);
-                MessageBox.Show("You are authenticated");
+
+
+                this.appWindow.setUser(connectedUser);
+                // Open main window
+                this.appWindow.Show();
+
+
+                // Close auth window 
+                this.Close();
             }
             else
             {
-
                 stopLoading();
                 MessageBox.Show("Error : Wrong username or password");
             }

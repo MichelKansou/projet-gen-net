@@ -12,8 +12,8 @@ namespace Middleware
 {
     public class DispatchingService : IDispatchingService
     {
-        private const String URL_LISTENER = "tcp://192.168.48.1:61616";
-        private const String URL_PRODUCER = "tcp://192.168.48.1:61616";
+        private const String URL_LISTENER = "tcp://10.162.128.70:61616";
+        private const String URL_PRODUCER = "tcp://10.162.128.70:61616";
         private const String QUERY_LISTENER = "decodeResponse";
         private const String QUERY_PRODUCER = "decodeAsk";
 
@@ -26,7 +26,7 @@ namespace Middleware
             // init authService and DecodeFileService
             auth = new AuthService();
             user = new User();
-            //decodeFileService = new DecodeFileService(URL_LISTENER, QUERY_LISTENER, URL_PRODUCER, QUERY_PRODUCER);
+            decodeFileService = new DecodeFileService(URL_LISTENER, QUERY_LISTENER, URL_PRODUCER, QUERY_PRODUCER);
             Trace.WriteLine("Dispatching initialized");
         }
 
