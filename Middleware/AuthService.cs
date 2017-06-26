@@ -47,9 +47,13 @@ namespace Middleware
         
         public User CheckToken(String token)
         {
+            Trace.WriteLine("Token from checkToken : " + token);
             if (token == null) return null;
             User user = this.daoUser.FindByToken(token);
-            if (user == null || user.TokenExpiration < DateTime.Now)
+
+            int result = DateTime.Compare(user.TokenExpiration, DateTime.Now);
+
+            if (user == null || result < 0)
             {
                 return null;
             }

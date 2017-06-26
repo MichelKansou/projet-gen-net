@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Client.DispatchingServiceReference;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +24,18 @@ namespace Client.Views
     public partial class UploadPage : Page
     {
         private ObservableCollection<string> files = new ObservableCollection<string>();
+
+
+        private DispatchingServiceClient proxy;
+        private AppWindow appWindow;
+
         public UploadPage()
         {
             InitializeComponent();
             this.DataContext = this;
+            this.appWindow = (AppWindow)System.Windows.Application.Current.MainWindow;
+            Console.WriteLine("current user token from Upload  : " + this.appWindow.getUser().token);
+            this.proxy = new DispatchingServiceClient();
         }
 
         public ObservableCollection<string> Files
@@ -36,6 +46,7 @@ namespace Client.Views
             }
         }
 
+        // Detect file drop over listbox
         private void DropBox_Drop(object sender, DragEventArgs e)
         {
 
@@ -49,12 +60,44 @@ namespace Client.Views
                 {
                     this.files.Add(filePath);
                 }
+
+                UploadFilesAsync(files);
+
             }
 
             var listbox = sender as ListBox;
             listbox.Background = new SolidColorBrush(Color.FromRgb(226, 226, 226));
         }
 
+        private async void UploadFilesAsync(string[] files)
+        {
+            foreach (var file in files)
+            {
+                string fileName = System.IO.Path.GetFileName(file);
+                string fullPath = System.IO.Path.GetFullPath(file);
+                string content = File.ReadAllText(fullPath);
+                DispatchingServiceReference.DecodeFileIn decodeFileIn = new DispatchingServiceReference.DecodeFileIn
+                {
+                    FileName = fileName,
+                    Content = content,
+                    Md5 = ""
+                };
+
+                Message request = new Message()
+                {
+                    application = appWindow.getAppInfo(),
+                    operation = "decode",
+                    decodeFileIn = decodeFileIn,
+                    userToken = appWindow.getUser().token
+                };
+                await this.proxy.DispatcherAsync(request).ContinueWith(t => {
+                    Response resp = t.Result;
+                    MessageBox.Show("Secret : " + resp.decodeFileout.Secret.ToString());
+                });
+            }
+        }
+
+        // Detect file over the listbox
         private void DropBox_DragOver(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -69,6 +112,7 @@ namespace Client.Views
             }
         }
 
+        // Detect leave of file over the listbox
         private void DropBox_DragLeave(object sender, DragEventArgs e)
         {
             var listbox = sender as ListBox;

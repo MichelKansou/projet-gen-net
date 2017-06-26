@@ -5,6 +5,7 @@ using System.Windows.Navigation;
 using MahApps.Metro.Controls;
 using Client.Views;
 using MenuItem = Client.ViewModels.MenuItem;
+using System;
 
 namespace Client
 {
@@ -14,10 +15,13 @@ namespace Client
     public partial class AppWindow : MetroWindow
     {
         private User user;
+        private DispatchingServiceReference.Application appInfo;
+
         public AppWindow()
         {
             InitializeComponent();
             this.user = new User();
+            this.appInfo = new DispatchingServiceReference.Application(); 
 
             // Navigate to the home page.
             Navigation.Navigation.Frame = new Frame(); //SplitViewFrame;
@@ -39,9 +43,31 @@ namespace Client
             }
         }
 
-        public User setUser(User user)
+        public void setUser(User user)
         {
-            return this.user = user;
+            this.user = user;
+        }
+
+        public User getUser()
+        {
+            return this.user;
+        }
+
+        public void setAppInfo(DispatchingServiceReference.Application appInfo)
+        {
+            this.appInfo = appInfo;
+        }
+
+        public DispatchingServiceReference.Application getAppInfo()
+        {
+            return this.appInfo;
+        }
+
+        protected override void OnContentRendered(EventArgs e)
+        {
+            base.OnContentRendered(e);
+
+            Console.WriteLine("current user token : " + this.user.token);
         }
     }
 }

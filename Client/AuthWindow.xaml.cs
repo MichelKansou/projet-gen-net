@@ -94,6 +94,8 @@ namespace Client
 
 
                 this.appWindow.setUser(connectedUser);
+                this.appWindow.setAppInfo(this.application);
+                App.Current.MainWindow = this.appWindow;
                 // Open main window
                 this.appWindow.Show();
 
