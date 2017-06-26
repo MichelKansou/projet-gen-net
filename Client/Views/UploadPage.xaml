@@ -1,0 +1,18 @@
+﻿<Page x:Class="Client.Views.UploadPage"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Client.Views"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      Foreground="{DynamicResource TextBrush}"
+      mc:Ignorable="d"
+      d:DesignHeight="600"
+      d:DesignWidth="800"
+      Title="UploadPage">
+
+    <Grid Background="{DynamicResource AccentColorBrush4}">
+        <Label Content="Drag and drop to upload file" HorizontalAlignment="Center" VerticalAlignment="Top" Height="58" Width="780" Margin="0,10,10,0" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <ListBox ItemsSource="{Binding Path=Files}" Name="DropBox" HorizontalAlignment="Center" Height="512" Margin="10,78,10,10" VerticalAlignment="Center" Width="780" AllowDrop="True" Drop="DropBox_Drop" DragOver="DropBox_DragOver" DragLeave="DropBox_DragLeave" Background="White" FontSize="10" HorizontalContentAlignment="Center"/>
+    </Grid>
+</Page>
