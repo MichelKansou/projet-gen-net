@@ -2,7 +2,7 @@
 
 namespace DecodeFileLib
 {
-    class DecodeResponse
+    public class DecodeResponse
     {
         private String key;
         private String fileName;

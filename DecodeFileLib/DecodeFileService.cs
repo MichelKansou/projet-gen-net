@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -11,11 +12,13 @@ namespace DecodeFileLib
     {
         private JmsListener jmsListner;
         private JmsProducer jmsProducer;
+        public static Dictionary<String, DecodeResponse> responses;
 
         public DecodeFileService(String urlListener, String queueListener, String urlProducer, String queueProducer)
         {
             jmsListner = new JmsListener(urlListener, queueListener);
             jmsProducer = new JmsProducer(urlProducer, queueProducer);
+            responses = new Dictionary<String, DecodeResponse>();
         }
 
         public DecodeFileOut DecodeFile(DecodeFileIn decodeFile)
@@ -28,25 +31,45 @@ namespace DecodeFileLib
 
             for (int i = 0; i < 26; i++)
             {
-                if (jmsListner.Responses.ContainsKey(decodeFile.FileName))
+                if (responses.ContainsKey(decodeFile.FileName))
                 {
-                    // clear the dictionary
-                    jmsListner.Responses.Remove(decodeFile.FileName);
-
-                    // return 
-                    DecodeFileOut response = new DecodeFileOut();
-                    response.FileName = decodeFile.FileName;
-                    response.Key = jmsListner.Responses[decodeFile.FileName].Key;
-                    response.Secret = jmsListner.Responses[decodeFile.FileName].Secret;
-                    return response;
+                    Trace.WriteLine("send resp");
+                    return checkDecodeFile(decodeFile);
                 }
                 else
                 {
                     String decodedContent = Cesar(decodeFile.Content, i);
-                    jmsProducer.Send(decodedContent, decodeFile.FileName, i.ToString(), decodeFile.Md5);
+                    jmsProducer.Send(decodedContent, decodeFile.FileName, i.ToString(), decodeFile.Md5, 26);
                 }
             }
-            return null;
+            while (!(responses.ContainsKey(decodeFile.FileName))){}
+
+            Trace.WriteLine("Finished");
+
+            if (responses.ContainsKey(decodeFile.FileName))
+            {
+                return checkDecodeFile(decodeFile);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private DecodeFileOut checkDecodeFile(DecodeFileIn decodeFile)
+        {
+            // return 
+            DecodeFileOut response = new DecodeFileOut();
+            response.FileName = decodeFile.FileName;
+            response.Key = responses[decodeFile.FileName].Key;
+            response.Secret = responses[decodeFile.FileName].Secret;
+
+            Trace.WriteLine("clear");
+            // clear the dictionary
+            responses.Remove(decodeFile.FileName);
+
+            return response;
+
         }
 
         private String Cesar(String text, int key)
@@ -79,6 +102,11 @@ namespace DecodeFileLib
                 }
             }
             return new String(chars);
+        }
+
+        public static void AddResponses(String fileName, DecodeResponse response)
+        {
+            responses.Add(fileName, response);
         }
     }
 }
