@@ -1,4 +1,7 @@
-﻿using Client.DispatchingServiceReference;
+﻿using Client.Components;
+using Client.DispatchingServiceReference;
+using MahApps.Metro.Controls;
+using MahApps.Metro.SimpleChildWindow;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MahApps.Metro.SimpleChildWindow.ChildWindowManager;
 
 namespace Client.Views
 {
@@ -73,6 +77,7 @@ namespace Client.Views
         {
             foreach (var file in files)
             {
+                CustomMessageBox customMessageBox = new CustomMessageBox();
                 string fileName = System.IO.Path.GetFileName(file);
                 string fullPath = System.IO.Path.GetFullPath(file);
                 string content = File.ReadAllText(fullPath);
@@ -90,10 +95,14 @@ namespace Client.Views
                     decodeFileIn = decodeFileIn,
                     userToken = appWindow.getUser().token
                 };
-                await this.proxy.DispatcherAsync(request).ContinueWith(t => {
+                await this.proxy.DispatcherAsync(request).ContinueWith(t =>
+                {
                     Response resp = t.Result;
-                    MessageBox.Show("Secret : " + resp.decodeFileout.Secret.ToString());
+                    customMessageBox.setEmailBody("Secret : " + resp.decodeFileout.Secret.ToString());
+                    customMessageBox.setExportText("Secret : " + resp.decodeFileout.Secret.ToString());
+                    customMessageBox.setPdfContent("<p>" + "Secret : " + resp.decodeFileout.Secret.ToString() + "</p>");
                 });
+                customMessageBox.ShowDialog();
             }
         }
 

@@ -6,6 +6,9 @@ using MahApps.Metro.Controls;
 using Client.Views;
 using MenuItem = Client.ViewModels.MenuItem;
 using System;
+using Client.Components;
+using MahApps.Metro.Controls.Dialogs;
+using System.Threading.Tasks;
 
 namespace Client
 {

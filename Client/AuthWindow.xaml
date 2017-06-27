@@ -4,7 +4,7 @@
                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       Title="Project Gen"
                       Height="390"
-                      Width="300">
+                      Width="300" ResizeMode="NoResize">
     <Grid Margin="0,0,3.2,0.2">
         <TextBox x:Name="usernameTextBox" Controls:TextBoxHelper.Watermark="Username" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Margin="62,150,0,0" TextChanged="usernameTextBox_TextChanged" BorderBrush="{x:Null}" Foreground="#FF9A9A9A" FontSize="18" FontFamily="Calibri" VerticalContentAlignment="Center" Background="#FFD9D9D9"/>
         <TextBox x:Name="passwordTextBox" Controls:TextBoxHelper.Watermark="Password" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171" Margin="62,189,0,0" TextChanged="passwordTextBox_TextChanged" BorderBrush="{x:Null}" Foreground="#FF9A9A9A" FontSize="18" FontFamily="Calibri" VerticalContentAlignment="Center" Background="#FFD9D9D9"/>
