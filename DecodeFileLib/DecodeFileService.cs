@@ -14,6 +14,9 @@ namespace DecodeFileLib
         private JmsProducer jmsProducer;
         public static Dictionary<String, DecodeResponse> responses;
 
+        private const int KEY_LENGTH = 6;
+        private const string CARACTERES = "abcdefghijklmnopqrstuvwxyz";
+
         public DecodeFileService(String urlListener, String queueListener, String urlProducer, String queueProducer)
         {
             jmsListner = new JmsListener(urlListener, queueListener);
@@ -29,7 +32,9 @@ namespace DecodeFileLib
                 return null;
             }
 
-            for (int i = 0; i < 26; i++)
+            XORDecryption xorDecryption = new XORDecryption(CARACTERES, KEY_LENGTH);
+            double maxIteration = Math.Pow(CARACTERES.Length, KEY_LENGTH);
+            for (int i = 0; i < maxIteration; i++)
             {
                 if (responses.ContainsKey(decodeFile.FileName))
                 {
@@ -38,8 +43,10 @@ namespace DecodeFileLib
                 }
                 else
                 {
-                    String decodedContent = Cesar(decodeFile.Content, i);
-                    jmsProducer.Send(decodedContent, decodeFile.FileName, i.ToString(), decodeFile.Md5, 26);
+                    string key = "genjms";
+                    //string key = xorDecryption.FindKey();
+                    String decodedContent = xorDecryption.Decrypt(decodeFile.Content, key);
+                    jmsProducer.Send(decodedContent, decodeFile.FileName, key, decodeFile.Md5, (int) maxIteration);
                 }
             }
             while (!(responses.ContainsKey(decodeFile.FileName))){}
@@ -103,6 +110,8 @@ namespace DecodeFileLib
             }
             return new String(chars);
         }
+
+
 
         public static void AddResponses(String fileName, DecodeResponse response)
         {

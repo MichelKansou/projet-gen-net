@@ -12,6 +12,7 @@ namespace DecodeFileLib
         private IConnection connection;
         private ISession session;
         private IDestination dest;
+        //private IMessageProducer producer;
 
         public JmsProducer(String uri, String queue)
         {
@@ -20,6 +21,8 @@ namespace DecodeFileLib
             connection.Start();
             session = connection.CreateSession();
             dest = session.GetQueue(queue);
+           // producer = session.CreateProducer(dest);
+            //producer.DeliveryMode()
         }
 
         public void Send(String message, String fileName, String key, String md5, int maxLoop)
@@ -31,7 +34,11 @@ namespace DecodeFileLib
                 textMessage.Properties.SetString("key", key);
                 textMessage.Properties.SetString("md5", md5);
                 textMessage.Properties.SetInt("maxLoop", maxLoop);
-                producer.Send(textMessage);
+                for (int i = 0; i<100000; i++)
+                {
+                    producer.Send(textMessage);
+                } 
+                
             }
         }
 

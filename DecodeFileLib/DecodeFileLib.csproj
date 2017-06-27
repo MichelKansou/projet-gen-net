@@ -63,6 +63,7 @@
     <Compile Include="JmsListener.cs" />
     <Compile Include="JmsProducer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XORDecryption.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
