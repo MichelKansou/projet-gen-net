@@ -46,6 +46,8 @@ namespace DecodeFileLib
         string fileName;
         string key;
         string secret;
+        string text;
+        float ratio;
         
         [DataMember]
         public string FileName
@@ -66,6 +68,19 @@ namespace DecodeFileLib
         {
             get { return secret; }
             set { secret = value; }
+        }
+
+        [DataMember]
+        public string Text
+        {
+            get { return text; }
+            set { text = value; }
+        }
+        [DataMember]
+        public float Ratio
+        {
+            get { return ratio; }
+            set { ratio = value; }
         }
     }
 }

@@ -12,7 +12,9 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ratio" type="xs:float" />
       <xs:element minOccurs="0" name="Secret" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DecodeFileOut" nillable="true" type="tns:DecodeFileOut" />

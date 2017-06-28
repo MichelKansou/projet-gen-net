@@ -22,30 +22,14 @@ namespace Client
     /// <summary>
     /// Interaction logic for AuthWindow.xaml
     /// </summary>
-    public partial class AuthWindow : MetroWindow, ILoader
+    public partial class AuthWindow : MetroWindow
     {
-        private bool _loading;
-        private string _loaderText;
         private Message msg;
         private DispatchingServiceClient proxy;
         private User user;
         private AppWindow appWindow;
 
         private DispatchingServiceReference.Application application;
-
-
-        public bool loading
-        {
-
-            get { return _loading; }
-            private set { _loading = value; }
-        }
-
-        public string loaderText
-        {
-            get { return _loaderText; }
-            set { _loaderText = value; }
-        }
 
         public AuthWindow()
         {
@@ -54,17 +38,15 @@ namespace Client
 
             // Initialiser la fenetre de l'application
             this.appWindow = new AppWindow();
-
-            this.loading = false;
             this.proxy = new DispatchingServiceClient();
             this.msg = new Message();
             this.msg.application = new DispatchingServiceReference.Application();
             Console.WriteLine("initialize message");
         }
 
-        private void submitButton_Click(object sender, RoutedEventArgs e)
+        private async void submitButton_Click(object sender, RoutedEventArgs e)
         {
-            startLoading();
+            this.startLoading();
             this.user = new User()
             {
                 username = usernameTextBox.Text,
@@ -78,7 +60,7 @@ namespace Client
                 user = user
             };
             
-            Response response = this.proxy.Dispatcher(request);
+            Response response = await proxy.DispatcherAsync(request);
             Console.WriteLine("Operation " + request.operation  + " --- " + response.status);
 
             if (response.status == "SUCCESS")
@@ -132,30 +114,18 @@ namespace Client
 
         }
 
-        private void onLoad()
+        private void startLoading()
         {
-            Task.Factory.StartNew(() =>
-            {
-                startLoading();
-                updateText("Loading");
-                Thread.Sleep(1000);
-                stopLoading();
-            });
+            Console.WriteLine("StartLoading");
+            this.AuthForm.Visibility = Visibility.Hidden;
+            this.Loader.Visibility = Visibility.Visible;
+            Thread.Sleep(1000);
         }
 
-        public void startLoading()
+        private void stopLoading()
         {
-            this.loading = true;
-        }
-
-        public void updateText(string text)
-        {
-            this.loaderText = text;
-        }
-
-        public void stopLoading()
-        {
-            this.loading = false;
+            this.AuthForm.Visibility = Visibility.Visible;
+            this.Loader.Visibility = Visibility.Hidden;
         }
     }
 }

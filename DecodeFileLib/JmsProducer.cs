@@ -34,11 +34,7 @@ namespace DecodeFileLib
                 textMessage.Properties.SetString("key", key);
                 textMessage.Properties.SetString("md5", md5);
                 textMessage.Properties.SetInt("maxLoop", maxLoop);
-                for (int i = 0; i<100000; i++)
-                {
-                    producer.Send(textMessage);
-                } 
-                
+                producer.Send(textMessage);
             }
         }
 

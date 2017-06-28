@@ -494,7 +494,13 @@ namespace Client.DispatchingServiceReference {
         private string KeyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float RatioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SecretField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TextField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -533,6 +539,19 @@ namespace Client.DispatchingServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public float Ratio {
+            get {
+                return this.RatioField;
+            }
+            set {
+                if ((this.RatioField.Equals(value) != true)) {
+                    this.RatioField = value;
+                    this.RaisePropertyChanged("Ratio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Secret {
             get {
                 return this.SecretField;
@@ -541,6 +560,19 @@ namespace Client.DispatchingServiceReference {
                 if ((object.ReferenceEquals(this.SecretField, value) != true)) {
                     this.SecretField = value;
                     this.RaisePropertyChanged("Secret");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Text {
+            get {
+                return this.TextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TextField, value) != true)) {
+                    this.TextField = value;
+                    this.RaisePropertyChanged("Text");
                 }
             }
         }

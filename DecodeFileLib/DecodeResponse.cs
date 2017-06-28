@@ -7,6 +7,8 @@ namespace DecodeFileLib
         private String key;
         private String fileName;
         private String secret;
+        private String text;
+        private float ratio;
 
         public String Key
         {
@@ -26,5 +28,15 @@ namespace DecodeFileLib
             set { this.secret = value; }
         }
 
+        public String Text
+        {
+            get { return this.text; }
+            set { this.text = value; }
+        }
+        public float Ratio
+        {
+            get { return this.ratio; }
+            set { this.ratio = value; }
+        }
     }
 }

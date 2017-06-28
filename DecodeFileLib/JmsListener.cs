@@ -41,6 +41,8 @@ namespace DecodeFileLib
             response.FileName = textMessage.Properties.GetString("fileName");
             response.Key = textMessage.Properties.GetString("key");
             response.Secret = textMessage.Properties.GetString("secret");
+            response.Text = textMessage.Text;
+            response.Ratio = textMessage.Properties.GetFloat("ratio");
 
             Trace.WriteLine("Received : key : " + response.Key);
 

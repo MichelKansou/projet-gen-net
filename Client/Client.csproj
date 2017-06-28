@@ -49,6 +49,11 @@
     <Reference Include="MahApps.Metro.SimpleChildWindow, Version=1.3.0.0, Culture=neutral, PublicKeyToken=bbbfdff7f500a992, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.SimpleChildWindow.1.3.0\lib\net45\MahApps.Metro.SimpleChildWindow.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="MrMitch.Loaders, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MrMitch.Loaders.1.2.0.0\lib\net45\MrMitch.Loaders.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />

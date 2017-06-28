@@ -14,7 +14,7 @@ namespace DecodeFileLib
         private JmsProducer jmsProducer;
         public static Dictionary<String, DecodeResponse> responses;
 
-        private const int KEY_LENGTH = 6;
+        private const int KEY_LENGTH = 3;
         private const string CARACTERES = "abcdefghijklmnopqrstuvwxyz";
 
         public DecodeFileService(String urlListener, String queueListener, String urlProducer, String queueProducer)
@@ -43,8 +43,7 @@ namespace DecodeFileLib
                 }
                 else
                 {
-                    string key = "genjms";
-                    //string key = xorDecryption.FindKey();
+                    string key = xorDecryption.FindKey();
                     String decodedContent = xorDecryption.Decrypt(decodeFile.Content, key);
                     jmsProducer.Send(decodedContent, decodeFile.FileName, key, decodeFile.Md5, (int) maxIteration);
                 }
@@ -70,6 +69,8 @@ namespace DecodeFileLib
             response.FileName = decodeFile.FileName;
             response.Key = responses[decodeFile.FileName].Key;
             response.Secret = responses[decodeFile.FileName].Secret;
+            response.Text = responses[decodeFile.FileName].Text;
+            response.Ratio = responses[decodeFile.FileName].Ratio;
 
             Trace.WriteLine("clear");
             // clear the dictionary

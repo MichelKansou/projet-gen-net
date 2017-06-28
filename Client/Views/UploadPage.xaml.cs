@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -81,11 +82,13 @@ namespace Client.Views
                 string fileName = System.IO.Path.GetFileName(file);
                 string fullPath = System.IO.Path.GetFullPath(file);
                 string content = File.ReadAllText(fullPath);
+                string pdfContent = File.ReadAllText(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"/pdf/index.html");
+
                 DispatchingServiceReference.DecodeFileIn decodeFileIn = new DispatchingServiceReference.DecodeFileIn
                 {
                     FileName = fileName,
                     Content = content,
-                    Md5 = ""
+                    Md5 = CalculateMD5Hash(content)
                 };
 
                 Message request = new Message()
@@ -98,12 +101,36 @@ namespace Client.Views
                 await this.proxy.DispatcherAsync(request).ContinueWith(t =>
                 {
                     Response resp = t.Result;
+                    float float_ratio = resp.decodeFileout.Ratio * 100;
+                    int ratio = (int)float_ratio;
                     customMessageBox.setEmailBody("Secret : " + resp.decodeFileout.Secret.ToString());
                     customMessageBox.setExportText("Secret : " + resp.decodeFileout.Secret.ToString());
-                    customMessageBox.setPdfContent("<p>" + "Secret : " + resp.decodeFileout.Secret.ToString() + "</p>");
+                    pdfContent = pdfContent.Replace("#text", resp.decodeFileout.Text).Replace("#email", resp.decodeFileout.Secret.ToString()).Replace("#percent", ratio.ToString() + "%");
+                    customMessageBox.setPdfContent(pdfContent);
                 });
                 customMessageBox.ShowDialog();
             }
+        }
+
+        private string CalculateMD5Hash(string input)
+        {
+            MD5 md5 = MD5.Create();
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+            byte[] hash = md5.ComputeHash(inputBytes);
+
+            // step 2, convert byte array to hex string
+
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < hash.Length; i++)
+
+            {
+
+                sb.Append(hash[i].ToString("x2"));
+
+            }
+
+            return sb.ToString();
         }
 
         // Detect file over the listbox
