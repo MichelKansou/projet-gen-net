@@ -31,12 +31,11 @@ namespace Client
 
         private DispatchingServiceReference.Application application;
 
+        // Initialize Window Application
         public AuthWindow()
         {
             InitializeComponent();
             this.application = InitApplicationInfo();
-
-            // Initialiser la fenetre de l'application
             this.appWindow = new AppWindow();
             this.proxy = new DispatchingServiceClient();
             this.msg = new Message();
@@ -44,6 +43,7 @@ namespace Client
             Console.WriteLine("initialize message");
         }
 
+        // On submit button try to connect user 
         private async void submitButton_Click(object sender, RoutedEventArgs e)
         {
             this.startLoading();
@@ -88,12 +88,13 @@ namespace Client
             else
             {
                 stopLoading();
-                MessageBox.Show("Error : Wrong username or password");
+                MessageBox.Show("Error : Wrong username or password please try again");
             }
             
 
         }
 
+        // Initialize Application info
         private DispatchingServiceReference.Application InitApplicationInfo()
         {
             return new DispatchingServiceReference.Application
@@ -109,14 +110,14 @@ namespace Client
             
         }
 
-
+        // Hide Authentication grid and show loader grid
         private void startLoading()
         {
-            Console.WriteLine("StartLoading");
             this.AuthForm.Visibility = Visibility.Hidden;
             this.Loader.Visibility = Visibility.Visible;
         }
 
+        // Hide loader grid and show Authentication grid
         private void stopLoading()
         {
             this.AuthForm.Visibility = Visibility.Visible;

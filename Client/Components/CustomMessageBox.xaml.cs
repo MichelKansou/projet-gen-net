@@ -34,12 +34,13 @@ namespace Client.Components
         private string fileText;
         private string pdfContent;
         
-
+        // Initialize Custom Message Box
         public CustomMessageBox()
         {
             InitializeComponent();
         }
 
+        // Send Email
         private void btnSendEmail_Click(object sender, RoutedEventArgs e)
         {
             SmtpClient client = new SmtpClient("smtp-mail.outlook.com");
@@ -66,6 +67,7 @@ namespace Client.Components
             }
         }
 
+        // Export Text
         private void btnExportText_Click(object sender, RoutedEventArgs e)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -80,6 +82,7 @@ namespace Client.Components
             }
         }
 
+        // Export PDF
         private void btnExportPDF_Click(object sender, RoutedEventArgs e)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -87,16 +90,19 @@ namespace Client.Components
             HtmlToPdf.RenderHtmlAsPdf(this.pdfContent).SaveAs(@"" + path + "/exportedFile.pdf");
         }
 
+        // set email body content 
         public void setEmailBody(string emailBody)
         {
             this.emailBody = emailBody;
         }
 
+        // set exported text file content 
         public void setExportText(string text)
         {
             this.fileText = text;
         }
 
+        // set exported PDF content
         public void setPdfContent(string pdfContent)
         {
             this.pdfContent = pdfContent;

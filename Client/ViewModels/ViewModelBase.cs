@@ -2,7 +2,8 @@
 using Client.Mvvm;
 
 namespace Client.ViewModels
-{
+{ 
+    // Interface for hamburger menu
     internal class ViewModelBase : BindableBase
     {
         private static readonly ObservableCollection<MenuItem> AppMenu = new ObservableCollection<MenuItem>();

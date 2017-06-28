@@ -5,6 +5,7 @@ namespace Client.ViewModels
 {
     internal class ShellViewModel : ViewModelBase
     {
+        // Add Item to the Hamburger menu
         public ShellViewModel()
         {
             // Build the menus

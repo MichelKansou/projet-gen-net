@@ -4,6 +4,7 @@ using Client.Mvvm;
 
 namespace Client.ViewModels
 {
+    // Definition of MenuItem structure
     internal class MenuItem : BindableBase
     {
         private object _icon;

@@ -13,6 +13,7 @@ namespace Client.Navigation
             set { _frame = value; }
         }
 
+        // Check if current navigation page is different 
         public static bool Navigate(Uri sourcePageUri)
         {
             if (_frame.CurrentSource != sourcePageUri)
@@ -22,6 +23,7 @@ namespace Client.Navigation
             return true;
         }
 
+        // Check if current page content is different
         public static bool Navigate(object content)
         {
             if (_frame.NavigationService.Content != content)

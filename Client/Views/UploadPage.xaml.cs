@@ -34,6 +34,7 @@ namespace Client.Views
         private DispatchingServiceClient proxy;
         private AppWindow appWindow;
 
+        // Initialze Upload Page
         public UploadPage()
         {
             InitializeComponent();
@@ -43,6 +44,7 @@ namespace Client.Views
             this.proxy = new DispatchingServiceClient();
         }
 
+        // get files path
         public ObservableCollection<string> Files
         {
             get
@@ -74,6 +76,7 @@ namespace Client.Views
             listbox.Background = new SolidColorBrush(Color.FromRgb(226, 226, 226));
         }
 
+        // Upload file asynchronously
         private async void UploadFilesAsync(string[] files)
         {
             this.startLoading();
@@ -115,6 +118,7 @@ namespace Client.Views
             }
         }
 
+        // Calculate MD5 hash of the file
         private string CalculateMD5Hash(string input)
         {
             MD5 md5 = MD5.Create();
@@ -158,12 +162,14 @@ namespace Client.Views
             listbox.Background = new SolidColorBrush(Color.FromRgb(226, 226, 226));
         }
 
+        // Hide Upload grid and show loader grid
         private void startLoading()
         {
             this.Upload.Visibility = Visibility.Hidden;
             this.Loader.Visibility = Visibility.Visible;
         }
 
+        // Hide loader grid and show upload grid
         private void stopLoading()
         {
             this.Upload.Visibility = Visibility.Visible;
