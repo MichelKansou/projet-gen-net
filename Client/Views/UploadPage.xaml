@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Client.Views"
+      xmlns:loaders="clr-namespace:Loaders;assembly=MrMitch.Loaders"
       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
       Foreground="{DynamicResource TextBrush}"
       mc:Ignorable="d"
@@ -12,7 +13,14 @@
       Title="UploadPage">
 
     <Grid Background="{DynamicResource AccentColorBrush4}">
-        <Label Content="Drag and drop to upload file" HorizontalAlignment="Center" VerticalAlignment="Top" Height="58" Width="780" Margin="0,10,10,0" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <ListBox ItemsSource="{Binding Path=Files}" Name="DropBox" HorizontalAlignment="Center" Height="512" Margin="10,78,10,10" VerticalAlignment="Center" Width="780" AllowDrop="True" Drop="DropBox_Drop" DragOver="DropBox_DragOver" DragLeave="DropBox_DragLeave" Background="White" FontSize="10" HorizontalContentAlignment="Center"/>
+        <Grid x:Name="Upload">
+            <Label Content="Drag and drop to upload file" HorizontalAlignment="Center" VerticalAlignment="Top" Height="63" Width="780" Margin="5,10,15,0" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <ListBox ItemsSource="{Binding Path=Files}" Name="DropBox" HorizontalAlignment="Center" Height="512" Margin="10,78,10,10" VerticalAlignment="Center" Width="780" AllowDrop="True" Drop="DropBox_Drop" DragOver="DropBox_DragOver" DragLeave="DropBox_DragLeave" Background="White" FontSize="10" HorizontalContentAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="Loader" Visibility="Hidden">
+            <loaders:ChromeLoader Margin="98,159,93,102" Height="100" Width="100" Foreground="#FFE74C3C" Thickness="3"/>
+            <Label Content="Loading" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="376,402,0,0"/>
+        </Grid>
     </Grid>
+    
 </Page>

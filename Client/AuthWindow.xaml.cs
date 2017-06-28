@@ -50,7 +50,7 @@ namespace Client
             this.user = new User()
             {
                 username = usernameTextBox.Text,
-                password = passwordTextBox.Text
+                password = passwordTextBox.Password
             };
 
             Message request = new Message()
@@ -109,17 +109,12 @@ namespace Client
             
         }
 
-        private void passwordTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
 
         private void startLoading()
         {
             Console.WriteLine("StartLoading");
             this.AuthForm.Visibility = Visibility.Hidden;
             this.Loader.Visibility = Visibility.Visible;
-            Thread.Sleep(1000);
         }
 
         private void stopLoading()

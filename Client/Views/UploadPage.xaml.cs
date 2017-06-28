@@ -76,13 +76,15 @@ namespace Client.Views
 
         private async void UploadFilesAsync(string[] files)
         {
+            this.startLoading();
             foreach (var file in files)
             {
                 CustomMessageBox customMessageBox = new CustomMessageBox();
                 string fileName = System.IO.Path.GetFileName(file);
                 string fullPath = System.IO.Path.GetFullPath(file);
                 string content = File.ReadAllText(fullPath);
-                string pdfContent = File.ReadAllText(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"/pdf/index.html");
+                string pdfContent = File.ReadAllText(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\Resources\pdf\index.html");
+                pdfContent = pdfContent.Replace("#image", Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\Resources\pdf\whitehat.png");
 
                 DispatchingServiceReference.DecodeFileIn decodeFileIn = new DispatchingServiceReference.DecodeFileIn
                 {
@@ -109,6 +111,7 @@ namespace Client.Views
                     customMessageBox.setPdfContent(pdfContent);
                 });
                 customMessageBox.ShowDialog();
+                this.stopLoading();
             }
         }
 
@@ -153,6 +156,18 @@ namespace Client.Views
         {
             var listbox = sender as ListBox;
             listbox.Background = new SolidColorBrush(Color.FromRgb(226, 226, 226));
+        }
+
+        private void startLoading()
+        {
+            this.Upload.Visibility = Visibility.Hidden;
+            this.Loader.Visibility = Visibility.Visible;
+        }
+
+        private void stopLoading()
+        {
+            this.Upload.Visibility = Visibility.Visible;
+            this.Loader.Visibility = Visibility.Hidden;
         }
 
     }

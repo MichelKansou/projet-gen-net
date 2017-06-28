@@ -9,12 +9,14 @@
     <Grid Margin="0,0,3.2,0.2">
         <Grid x:Name="AuthForm">
             <TextBox x:Name="usernameTextBox" Controls:TextBoxHelper.Watermark="Username" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Margin="62,150,0,0" TextChanged="usernameTextBox_TextChanged" BorderBrush="{x:Null}" Foreground="#FF9A9A9A" FontSize="18" FontFamily="Calibri" VerticalContentAlignment="Center" Background="#FFD9D9D9"/>
-            <TextBox x:Name="passwordTextBox" Controls:TextBoxHelper.Watermark="Password" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171" Margin="62,189,0,0" TextChanged="passwordTextBox_TextChanged" BorderBrush="{x:Null}" Foreground="#FF9A9A9A" FontSize="18" FontFamily="Calibri" VerticalContentAlignment="Center" Background="#FFD9D9D9"/>
+            <PasswordBox x:Name="passwordTextBox" Controls:TextBoxHelper.Watermark="Password" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="171" Margin="62,189,0,0" BorderBrush="{x:Null}" Foreground="#FF9A9A9A" FontSize="18" FontFamily="Calibri" VerticalContentAlignment="Center" Background="#FFD9D9D9"/>
             <Button x:Name="submitButton" Content="Sign in" HorizontalAlignment="Left" VerticalAlignment="Top" Width="170" Margin="63,241,0,0" Click="submitButton_Click" Background="White" BorderBrush="#FFD9D9D9" Foreground="#FF7F8C8D" Height="44" FontSize="16" FontFamily="Calibri"/>
-            <Label Content="Project Gen 1.0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="94,322,0,0" Foreground="Black" FontFamily="Calibri" FontSize="14"/>
         </Grid>
         <Grid x:Name="Loader" Visibility="Hidden">
-            <loaders:ChromeLoader Margin="20" Height="100" Width="100" Foreground="#FFE74C3C" Thickness="3"/>
+            <loaders:ChromeLoader Margin="98,159,93,102" Height="100" Width="100" Foreground="#FFE74C3C" Thickness="3"/>
+            <Label Content="Loading" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,279,0,0"/>
         </Grid>
+        <Image Margin="88,10,84.8,230.8" Source="whitehat-logo.png" Stretch="Fill"/>
+        <Label Content="Project Gen 1.0 Copyright 2017 whitehat" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,324,0,0" Foreground="Black" FontFamily="Calibri" FontSize="14" Width="271" HorizontalContentAlignment="Center"/>
     </Grid>
 </Controls:MetroWindow>
