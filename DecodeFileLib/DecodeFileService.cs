@@ -80,6 +80,7 @@ namespace DecodeFileLib
 
         }
 
+        // Do not use this function
         private String Cesar(String text, int key)
         {
             char[] chars = text.ToCharArray();

@@ -22,6 +22,7 @@ namespace DecodeFileLib
             set { this.responses = value; }
         }
 
+        // Initialize JMS Listner 
         public JmsListener(String uri, String queue)
         {
             IConnectionFactory factory = new ConnectionFactory(uri);
@@ -34,6 +35,7 @@ namespace DecodeFileLib
             responses = new Dictionary<string, DecodeResponse>();
         }
 
+        // Get Message from Queue   
         private void OnMessage(IMessage receivedMsg)
         {
             ITextMessage textMessage = receivedMsg as ITextMessage;

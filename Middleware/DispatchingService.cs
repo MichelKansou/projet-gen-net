@@ -21,6 +21,7 @@ namespace Middleware
         private User user;
         private DecodeFileService decodeFileService;
 
+        // Initialize Dispatching Service
         public DispatchingService()
         {
             // init authService and DecodeFileService
@@ -30,6 +31,7 @@ namespace Middleware
             Trace.WriteLine("Dispatching initialized");
         }
 
+        // Main WCF dispatcher
         public Response Dispatcher(Message msg)
         {
             Response response = new Response();

@@ -25,6 +25,7 @@ namespace DecodeFileLib
             //producer.DeliveryMode()
         }
 
+        // Send Message info to Queue
         public void Send(String message, String fileName, String key, String md5, int maxLoop)
         {
             using (IMessageProducer producer = session.CreateProducer(dest))

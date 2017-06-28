@@ -12,12 +12,14 @@ namespace DecodeFileLib
         private string caracteres;
         private int keyLength;
 
+        // Initialize XORDecryption
         public XORDecryption(string caracteres, int keyLength)
         {
             this.caracteres = caracteres;
             this.keyLength = keyLength;
         }
 
+        // Decrypt XOR message using key
         public string Decrypt(string textToEncrypt, string key)
         {
             StringBuilder result = new StringBuilder();
@@ -26,6 +28,7 @@ namespace DecodeFileLib
             return result.ToString();
         }
 
+        // Generate Key for XOR Decrytpion
         public string FindKey()
         {
             string response = "";
@@ -38,6 +41,7 @@ namespace DecodeFileLib
             return response;
         }
 
+        // Increase current key example : aaa -> aab -> abb
         private int[] IncreaseKey(int[] key, int current, int length)
         {
             if (key[current] != length)

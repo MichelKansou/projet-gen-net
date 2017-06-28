@@ -17,12 +17,13 @@ namespace Middleware
     {
         private UserDao daoUser;
 
+        // Initialize AuthService
         public AuthService()
         {
             this.daoUser = new UserDao();
-            Trace.WriteLine("AuthService initialized");
         }
 
+        // Authenticate user with valide info
         public User Authenticate(String username, String password)
         {
             password = generateHash(password);
@@ -44,7 +45,8 @@ namespace Middleware
             
             return user;
         }
-        
+
+        // Check if connected user has a valid token
         public User CheckToken(String token)
         {
             Trace.WriteLine("Token from checkToken : " + token);
@@ -66,6 +68,7 @@ namespace Middleware
             return user;
         }
 
+        // Generate Hash for user password
         private String generateHash(String text)
         {
             // given, a password in a string
@@ -84,6 +87,8 @@ namespace Middleware
                // make lowercase
                .ToLower();
         }
+
+        // Generate User Token
         private User GenerateToken(User user)
         {
             Guid g = Guid.NewGuid();
