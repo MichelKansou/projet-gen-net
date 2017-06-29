@@ -33,7 +33,7 @@ namespace Client.Views
 
         private DispatchingServiceClient proxy;
         private AppWindow appWindow;
-
+        private Response resp;
         // Initialze Upload Page
         public UploadPage()
         {
@@ -42,6 +42,7 @@ namespace Client.Views
             this.appWindow = (AppWindow)System.Windows.Application.Current.MainWindow;
             Console.WriteLine("current user token from Upload  : " + this.appWindow.getUser().token);
             this.proxy = new DispatchingServiceClient();
+            this.resp = new Response();
         }
 
         // get files path
@@ -105,15 +106,22 @@ namespace Client.Views
                 };
                 await this.proxy.DispatcherAsync(request).ContinueWith(t =>
                 {
-                    Response resp = t.Result;
+                    this.resp = t.Result;
                     float float_ratio = resp.decodeFileout.Ratio * 100;
                     int ratio = (int)float_ratio;
                     customMessageBox.setEmailBody("Secret : " + resp.decodeFileout.Secret.ToString());
-                    customMessageBox.setExportText("Secret : " + resp.decodeFileout.Secret.ToString());
+                    customMessageBox.setExportText(resp.decodeFileout.Text);
                     pdfContent = pdfContent.Replace("#text", resp.decodeFileout.Text).Replace("#email", resp.decodeFileout.Secret.ToString()).Replace("#percent", ratio.ToString() + "%");
                     customMessageBox.setPdfContent(pdfContent);
                 });
-                customMessageBox.ShowDialog();
+                if ("DECODE_IMPOSSIBLE".Equals(resp.status))
+                {
+                    MessageBox.Show(resp.description);
+                }
+                else
+                {
+                    customMessageBox.ShowDialog();
+                }
                 this.stopLoading();
             }
         }

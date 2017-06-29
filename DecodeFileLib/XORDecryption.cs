@@ -33,7 +33,8 @@ namespace DecodeFileLib
         {
             string response = "";
             key = IncreaseKey(key, keyLength - 1, caracteres.Length - 1);
-            Console.WriteLine(key[5]);
+            if (key == null) return null;
+
             for (int i = 0; i < keyLength; i++)
             {
                 response += caracteres[key[i]];

@@ -79,7 +79,7 @@ namespace Middleware
                         case "decode":
                             // decode the file
                             response.DecodeFileOut = decodeFileService.DecodeFile(msg.DecodeFileIn);
-                            if (response.DecodeFileOut == null)
+                            if (response.DecodeFileOut == null || response.DecodeFileOut.Key == null || response.DecodeFileOut.Key == "")
                             {
                                 response.Description = "Impossible to decode the file.";
                                 response.Status = "DECODE_IMPOSSIBLE";

@@ -46,21 +46,17 @@ namespace DecodeFileLib
             response.Text = textMessage.Text;
             response.Ratio = textMessage.Properties.GetFloat("ratio");
 
-            Trace.WriteLine("Received : key : " + response.Key);
+            Trace.WriteLine("Received key : " + response.Key);
+            Trace.WriteLine("Received Filename : " + response.FileName);
 
-            //if (!responses.ContainsKey(response.FileName))
+           // response = "".Equals(response.Key) ? null : response;
+
+            if ("".Equals(response.Key))
             {
-                response = "".Equals(response.Key) ? null : response;
-                if (response == null)
-                {
-                    Trace.WriteLine("Key is null");
-                }
-
-                DecodeFileService.AddResponses(response.FileName, response);
-
-                // Trace.WriteLine("count eee : " + Responses.Count);
-                // Trace.WriteLine("added : key : " + Responses[response.FileName].Key + " fileName "  + Responses[response.FileName].FileName);
+                Trace.WriteLine("Key is null");
             }
+
+            DecodeFileService.AddResponses(response.FileName, response);
         }
     }
 }
