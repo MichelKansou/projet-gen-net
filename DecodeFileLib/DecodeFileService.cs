@@ -43,7 +43,7 @@ namespace DecodeFileLib
                 }
                 else
                 {
-                    string key = "fjuiop";//xorDecryption.FindKey();
+                    string key = "ety67";//xorDecryption.FindKey();
                     if (key == null)
                     {
                         jmsProducer.Send("", decodeFile.FileName, "", decodeFile.Md5, 0);

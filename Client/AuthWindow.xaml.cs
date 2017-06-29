@@ -36,7 +36,6 @@ namespace Client
         {
             InitializeComponent();
             this.application = InitApplicationInfo();
-            this.appWindow = new AppWindow();
             this.proxy = new DispatchingServiceClient();
             this.msg = new Message();
             this.msg.application = new DispatchingServiceReference.Application();
@@ -74,16 +73,15 @@ namespace Client
                 Console.WriteLine("LastConnection : " + connectedUser.lastConnection);
                 Console.WriteLine("TokenExpiration : " + connectedUser.tokenExpiration);
 
-
+                this.appWindow = new AppWindow();
+                App.Current.MainWindow = this.appWindow;
                 this.appWindow.setUser(connectedUser);
                 this.appWindow.setAppInfo(this.application);
-                App.Current.MainWindow = this.appWindow;
-                // Open main window
-                this.appWindow.Show();
-
-
                 // Close auth window 
                 this.Close();
+                
+                // Open main window
+                this.appWindow.Show();
             }
             else
             {

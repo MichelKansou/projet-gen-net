@@ -38,11 +38,13 @@ namespace Client.Views
         public UploadPage()
         {
             InitializeComponent();
-            this.DataContext = this;
-            this.appWindow = (AppWindow)System.Windows.Application.Current.MainWindow;
-            Console.WriteLine("current user token from Upload  : " + this.appWindow.getUser().token);
             this.proxy = new DispatchingServiceClient();
             this.resp = new Response();
+        }
+
+        private void Page_loaded(object sender, RoutedEventArgs e)
+        {
+            if (this.appWindow == null) this.appWindow = (AppWindow)System.Windows.Application.Current.MainWindow;
         }
 
         // get files path

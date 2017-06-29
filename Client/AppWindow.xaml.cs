@@ -19,6 +19,10 @@ namespace Client
     {
         private User user;
         private DispatchingServiceReference.Application appInfo;
+        private static UploadPage uploadPage;
+        private static UserPage userPage;
+        private static AboutPage aboutPage;
+        private static SettingsPage settingsPage;
 
         // Initialize Main app
         public AppWindow()
@@ -30,7 +34,7 @@ namespace Client
             // Navigate to the upload page.
             Navigation.Navigation.Frame = new Frame(); //SplitViewFrame;
             Navigation.Navigation.Frame.Navigated += SplitViewFrame_OnNavigated;
-            this.Loaded += (sender, args) => Navigation.Navigation.Navigate(new UploadPage());
+            this.Loaded += (sender, args) => Navigation.Navigation.Navigate(UploadPage);
         }
 
         //
@@ -45,7 +49,24 @@ namespace Client
             var menuItem = e.ClickedItem as MenuItem;
             if (menuItem != null && menuItem.IsNavigation)
             {
-                Navigation.Navigation.Navigate(menuItem.NavigationDestination);
+                switch (menuItem.NavigationDestination)
+                {
+                    case "uploadPage":
+                        Navigation.Navigation.Navigate(UploadPage);
+                        break;
+                    case "userPage":
+                        Navigation.Navigation.Navigate(UserPage);
+                        break;
+                    case "aboutPage":
+                        Navigation.Navigation.Navigate(AboutPage);
+                        break;
+                    case "settingsPage":
+                        Navigation.Navigation.Navigate(SettingsPage);
+                        break;
+                    default:
+                        Navigation.Navigation.Navigate(UploadPage);
+                        break;
+                }
             }
         }
 
@@ -71,6 +92,32 @@ namespace Client
         public DispatchingServiceReference.Application getAppInfo()
         {
             return this.appInfo;
+        }
+
+
+
+        public UserPage UserPage
+        {
+            get { return (userPage == null) ? userPage = new UserPage() : userPage; }
+            set { userPage = value; }
+        }
+
+        public UploadPage UploadPage
+        {
+            get { return (uploadPage == null) ? uploadPage = new UploadPage() : uploadPage; }
+            set { uploadPage = value; }
+        }
+
+        public AboutPage AboutPage
+        {
+            get { return (aboutPage == null) ? aboutPage = new AboutPage() : aboutPage; }
+            set { aboutPage = value; }
+        }
+
+        public SettingsPage SettingsPage
+        {
+            get { return (settingsPage == null) ? settingsPage = new SettingsPage() : settingsPage; }
+            set { settingsPage = value; }
         }
     }
 }

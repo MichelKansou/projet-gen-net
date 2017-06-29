@@ -14,13 +14,9 @@ namespace Client.Navigation
         }
 
         // Check if current navigation page is different 
-        public static bool Navigate(Uri sourcePageUri)
+        public static bool Navigate(Page sourcePageUri)
         {
-            if (_frame.CurrentSource != sourcePageUri)
-            {
-                return _frame.Navigate(sourcePageUri);
-            }
-            return true;
+             return _frame.NavigationService.Navigate(sourcePageUri);
         }
 
         // Check if current page content is different

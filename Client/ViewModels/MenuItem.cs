@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using Client.Mvvm;
+using System.Windows.Controls;
 
 namespace Client.ViewModels
 {
@@ -10,7 +11,7 @@ namespace Client.ViewModels
         private object _icon;
         private string _text;
         private DelegateCommand _command;
-        private Uri _navigationDestination;
+        private String _navigationDestination;
 
         public object Icon
         {
@@ -30,12 +31,10 @@ namespace Client.ViewModels
             set { this.SetProperty(ref this._command, (DelegateCommand)value); }
         }
 
-        public Uri NavigationDestination
-        {
-            get { return this._navigationDestination; }
-            set { this.SetProperty(ref this._navigationDestination, value); }
-        }
 
-        public bool IsNavigation => this._navigationDestination != null;
+
+        public bool IsNavigation => this.NavigationDestination != null;
+
+        public String NavigationDestination { get => _navigationDestination; set => _navigationDestination = value; }
     }
 }
