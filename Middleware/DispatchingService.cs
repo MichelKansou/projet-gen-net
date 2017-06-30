@@ -12,8 +12,8 @@ namespace Middleware
 {
     public class DispatchingService : IDispatchingService
     {
-        private const String URL_LISTENER = "tcp://10.162.128.70:61616";
-        private const String URL_PRODUCER = "tcp://10.162.128.70:61616?jms.useAsyncSend=true";
+        private const String URL_LISTENER = "tcp://172.20.10.14:61616";
+        private const String URL_PRODUCER = "tcp://172.20.10.14:61616?jms.useAsyncSend=true";
         private const String QUERY_LISTENER = "decodeResponse";
         private const String QUERY_PRODUCER = "decodeAsk";
 

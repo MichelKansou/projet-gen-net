@@ -20,9 +20,9 @@ namespace Client
         private User user;
         private DispatchingServiceReference.Application appInfo;
         private static UploadPage uploadPage;
-        private static UserPage userPage;
+        private static WordPage wordPage;
+        private static DecodedFilePage decodedFilePage;
         private static AboutPage aboutPage;
-        private static SettingsPage settingsPage;
 
         // Initialize Main app
         public AppWindow()
@@ -54,14 +54,14 @@ namespace Client
                     case "uploadPage":
                         Navigation.Navigation.Navigate(UploadPage);
                         break;
-                    case "userPage":
-                        Navigation.Navigation.Navigate(UserPage);
+                    case "wordPage":
+                        Navigation.Navigation.Navigate(WordPage);
+                        break;
+                    case "decodedFilePage":
+                        Navigation.Navigation.Navigate(DecodedFilePage);
                         break;
                     case "aboutPage":
                         Navigation.Navigation.Navigate(AboutPage);
-                        break;
-                    case "settingsPage":
-                        Navigation.Navigation.Navigate(SettingsPage);
                         break;
                     default:
                         Navigation.Navigation.Navigate(UploadPage);
@@ -96,28 +96,27 @@ namespace Client
 
 
 
-        public UserPage UserPage
+        public WordPage WordPage
         {
-            get { return (userPage == null) ? userPage = new UserPage() : userPage; }
-            set { userPage = value; }
+            get { return wordPage ?? (wordPage = new WordPage()); }
+            set { wordPage = value; }
+        }
+        public DecodedFilePage DecodedFilePage
+        {
+            get { return decodedFilePage ?? (decodedFilePage = new DecodedFilePage()); }
+            set { decodedFilePage = value; }
         }
 
         public UploadPage UploadPage
         {
-            get { return (uploadPage == null) ? uploadPage = new UploadPage() : uploadPage; }
+            get { return uploadPage ?? (uploadPage = new UploadPage()); }
             set { uploadPage = value; }
         }
 
         public AboutPage AboutPage
         {
-            get { return (aboutPage == null) ? aboutPage = new AboutPage() : aboutPage; }
+            get { return aboutPage ?? (aboutPage = new AboutPage()); }
             set { aboutPage = value; }
-        }
-
-        public SettingsPage SettingsPage
-        {
-            get { return (settingsPage == null) ? settingsPage = new SettingsPage() : settingsPage; }
-            set { settingsPage = value; }
         }
     }
 }

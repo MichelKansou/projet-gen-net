@@ -37,8 +37,10 @@ namespace Client
             InitializeComponent();
             this.application = InitApplicationInfo();
             this.proxy = new DispatchingServiceClient();
-            this.msg = new Message();
-            this.msg.application = new DispatchingServiceReference.Application();
+            this.msg = new Message()
+            {
+                application = new DispatchingServiceReference.Application()
+            };
             Console.WriteLine("initialize message");
         }
 

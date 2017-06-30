@@ -43,7 +43,7 @@ namespace DecodeFileLib
                 }
                 else
                 {
-                    string key = "ety67";//xorDecryption.FindKey();
+                    string key = "fjuiop";//xorDecryption.FindKey();
                     if (key == null)
                     {
                         jmsProducer.Send("", decodeFile.FileName, "", decodeFile.Md5, 0);
@@ -74,13 +74,14 @@ namespace DecodeFileLib
         private DecodeFileOut checkDecodeFile(DecodeFileIn decodeFile)
         {
             // return 
-            DecodeFileOut response = new DecodeFileOut();
-            response.FileName = decodeFile.FileName;
-            response.Key = responses[decodeFile.FileName].Key;
-            response.Secret = responses[decodeFile.FileName].Secret;
-            response.Text = responses[decodeFile.FileName].Text;
-            response.Ratio = responses[decodeFile.FileName].Ratio;
-
+            DecodeFileOut response = new DecodeFileOut()
+            {
+                FileName = decodeFile.FileName,
+                Key = responses[decodeFile.FileName].Key,
+                Secret = responses[decodeFile.FileName].Secret,
+                Text = responses[decodeFile.FileName].Text,
+                Ratio = responses[decodeFile.FileName].Ratio
+            };
             Trace.WriteLine("clear");
             // clear the dictionary
             responses.Remove(decodeFile.FileName);
