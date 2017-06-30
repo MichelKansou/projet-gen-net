@@ -28,6 +28,7 @@ namespace Client.Views
         public WordPage()
         {
             InitializeComponent();
+            RunAsync().Wait();
         }
 
         static async Task RunAsync()
@@ -52,9 +53,7 @@ namespace Client.Views
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            WordData.Items.Clear();;
             Words items = new Words();
-           RunAsync().Wait();
             try
             {
                 items = await GetWordAsync("words?contains=" + SearchTextBox.Text);
